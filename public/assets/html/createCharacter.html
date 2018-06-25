@@ -29,6 +29,8 @@
             </ul>
     </div>
 
+    <button id="submitBtn">submit</button>
+
 
     <script>
         let skillPonints = 7;
@@ -53,6 +55,16 @@
             $("#skillPoints").text("Skill Points: " + skillPonints);
             $("#" + skill).attr("value",skillVal.toString());
             $("#" + skill + " .skillValStr").text(skill + " : " + skillVal.toString());
+        });
+
+        $("#submitBtn").on("click",function(event){
+            event.preventDefault();
+            let newChar = {
+                "name": $("#name").val().trim(),
+                "attack": parseInt($("#Attack").attr("value")),
+                "defense": parseInt($("#Defense").attr("value"))
+            }
+            console.log(newChar);
         });
     </script>
     <!-- Compiled and minified JavaScript -->
