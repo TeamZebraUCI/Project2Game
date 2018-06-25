@@ -18,13 +18,17 @@
         <br><br>
         <h3 id="skillPoints"></h3>
             <ul class="skills">
-                <li id="Defense" value="0">
-                    <h4 class="skillValStr">Defense : 0</h4>
+                <li id="Defense" value="20">
+                    <h4 class="skillValStr">Defense : 20</h4>
                     <button data-skill="Defense">-</button><button data-skill="Defense">+</button>
                 </li>
-                <li id="Attack" value="0">
-                    <h4 class="skillValStr">Attack : 0</h4>
+                <li id="Attack" value="20">
+                    <h4 class="skillValStr">Attack : 20</h4>
                     <button data-skill="Attack">-</button><button data-skill="Attack">+</button>
+                </li>
+                <li id="Health" value="20">
+                    <h4 class="skillValStr">Health : 20</h4>
+                    <button data-skill="Health">-</button><button data-skill="Health">+</button>
                 </li>
             </ul>
     </div>
@@ -33,7 +37,7 @@
 
 
     <script>
-        let skillPonints = 7;
+        let skillPonints = 20;
         $("#skillPoints").text("Skill Points: " + skillPonints);
 
         // increase decrease skill value
@@ -47,7 +51,7 @@
                     skillVal++;
                 }
             }else if($(this).text() == "-"){
-                if (skillVal > 0){
+                if (skillVal > 20){
                     skillPonints++;
                     skillVal--;
                 }
