@@ -11,26 +11,6 @@
     <label for="createPassword">Password</label>
     <input type="password" id="password-input" password="password">
   </div>
-  <button class="btn btn-large waves-effect waves-light blue darken-3 white-text" type="submit">Sign Up</button>
+  <button id='signup' class="btn btn-large waves-effect waves-light grey darken-3 white-text" type="submit">Sign Up</button>
+  <button id='login' class="btn btn-large waves-effect waves-light grey darken-3 white-text" type="submit">Login</button>
 </form>
-
-<h2>Fallen Heroes!</h2>
-
-<ul>
-  {{#each hero}} {{#if dead}}
-  <li>Hero #{{id}}. Has been slain on {{date_time}}</li>
-  <button data-id="{{id}}" class="btn disabled">Has Died</button>
-  {{/if}} {{/each}}
-</ul>
-
-<h2>Your Characters!</h2>
-
-<ul>
-  {{#each hero}} {{#else dead}}
-  <h1>{{name}}</h1>
-  <p>Hero stats: A{{attack}} D{{defense}}</p>
-  <p>Current HP: {{hp}}</p>
-  {{!-- add more here --}}
-  <button data-id="{{id}}" class="btn btn-large waves-effect waves-light blue darken-3 white-text">Play this Hero</button>
-  {{/else}} {{/each}}
-</ul>
