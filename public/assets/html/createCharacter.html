@@ -3,14 +3,12 @@
 
 <head>
 	<meta charset="UTF-8">
-    <!-- <link rel="icon" href="/assets/css/sithis.png"> -->
     
     <!-- Google Jquery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<!-- Materialize Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-	<!-- <link rel="stylesheet" href="/assets/css/style.css" type="text/css" /> -->
 	<title>Create Character</title>
 </head>
 
@@ -18,30 +16,29 @@
     <div>
         Name: <input id="name" type="text">
         <br><br>
-        <h1 id="skillPoints"></h1>
+        <h3 id="skillPoints"></h3>
             <ul class="skills">
                 <li id="Defense" value="0">
-                    <h4 class="skillValStr">Defense: 0</h4>
-                    <br><br>
+                    <h4 class="skillValStr">Defense : 0</h4>
                     <button data-skill="Defense">-</button><button data-skill="Defense">+</button>
+                </li>
+                <li id="Attack" value="0">
+                    <h4 class="skillValStr">Attack : 0</h4>
+                    <button data-skill="Attack">-</button><button data-skill="Attack">+</button>
                 </li>
             </ul>
     </div>
 
 
-
     <script>
-        const SKILLPOINTMAX = 7;
         let skillPonints = 7;
         $("#skillPoints").text("Skill Points: " + skillPonints);
 
         // increase decrease skill value
         $(".skills button").on("click",function(event){
             event.preventDefault();
-            console.log(this);
             let skill = $(this).attr("data-skill");
             let skillVal = parseInt($("#" + skill).attr("value"));
-            console.log(skillVal);
             if ($(this).text() == "+"){
                 if(skillPonints > 0){
                     skillPonints--;
@@ -53,12 +50,10 @@
                     skillVal--;
                 }
             }
-            console.log(skillVal);
             $("#skillPoints").text("Skill Points: " + skillPonints);
             $("#" + skill).attr("value",skillVal.toString());
             $("#" + skill + " .skillValStr").text(skill + " : " + skillVal.toString());
         });
-
     </script>
     <!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
