@@ -31,6 +31,7 @@
 
 
     <script>
+        const SKILLPOINTMAX = 7;
         let skillPonints = 7;
         $("#skillPoints").text("Skill Points: " + skillPonints);
 
@@ -42,11 +43,15 @@
             let skillVal = parseInt($("#" + skill).attr("value"));
             console.log(skillVal);
             if ($(this).text() == "+"){
-                skillPonints--;
-                skillVal++;
+                if(skillPonints > 0){
+                    skillPonints--;
+                    skillVal++;
+                }
             }else if($(this).text() == "-"){
-                skillPonints++;
-                skillVal--;
+                if (skillVal > 0){
+                    skillPonints++;
+                    skillVal--;
+                }
             }
             console.log(skillVal);
             $("#skillPoints").text("Skill Points: " + skillPonints);
