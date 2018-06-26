@@ -19,7 +19,8 @@
 
 ## Scion
 
-A scion is perfection in body, mind and grace. Raised by the most intelligent and wealthy, taught to fight by our best warriors, you lived a life of comfort and how have you paid for your fortune and gifts? With innocent blood. Sin has lead you here, your path inked in blood of gratuitous murder. How will the crowning jewel of our civilization survive in darkness and depravity? Learn well the lessons you will face in the unsightly underworld it is your only hope in finding your way home.
+A scion is perfection in body, mind and grace. Raised by the most intelligent and wealthy, taught to fight by our best warriors, you lived a life of comfort and how have you paid for your fortune and gifts? With innocent blood. Sin has lead you here, your path inked in blood of gratuitous murder. How will the crowning jewel of our civilization survive in darkness and depravity? Learn well the lessons you will face in *come up with a name* it is your only hope in finding your way home.
+
 
 
 
