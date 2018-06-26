@@ -41,7 +41,7 @@
 } */
 body{
     background: url('assassinBG.jpg');
-    background-repeat: fill;
+    background-repeat: contain;
 }
 h1{
   font-style: italic;
