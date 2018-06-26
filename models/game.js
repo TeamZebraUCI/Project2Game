@@ -38,8 +38,10 @@ $(document).ready(function () {
             $("#combatText").text("OH NO! The dragon slashed you with " + dragonDamage + " damage");
 
         }
+        $("#playerHealthBar").text("Your health: " + playerHealth);
+        $("#bossHealthBar").text("Boss health: " + dragonHealth);
     });
-
+});
 
     // function checkRound() {
 
@@ -112,4 +114,3 @@ $(document).ready(function () {
 
     // // Starts the game!
     // playRound()
-});
