@@ -14,6 +14,15 @@ module.exports = function(app) {
 
   // index route loads index.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/assets/html/index.html"));
+    res.render('index');
+  });
+  app.get("/newhero", function(req, res) {
+    res.render('createhero');
+  });
+  app.get("/game", function(req, res) {
+    res.render('game');
+  });
+  app.get("/stats", function(req, res) {
+    res.render('stats');
   });
 }
