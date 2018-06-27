@@ -40,7 +40,7 @@
     background-size: cover;
 } */
 body{
-    background: black url('gamebg.jpg') no-repeat;
+    background: black url('defaultbg.jpg') no-repeat;
     background-attachment: fixed;
     background-position: center center;
 }
