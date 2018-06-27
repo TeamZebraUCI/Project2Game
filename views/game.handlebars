@@ -1,21 +1,19 @@
+<h3>BOSS: Fire Dragon</h3>
+<div>
+  <h5>Slay the dragon to collect your reward!</h5>
+</div>
+<!--===BUTTONS IN GAME========================================================================================================================================-->
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="start()">Start</button>
+<div id="startGame"></div>
 
-<h2>Fallen Heroes!</h2>
+<h4 id="playerHealthBar"></h4>
+<h4 id="bossHealthBar"></h4>
 
-<ul>
-  {{#each hero}} {{#if dead}}
-  <li>Hero #{{id}}. Has been slain on {{date_time}}</li>
-  <button data-id="{{id}}" class="btn disabled">Has Died</button>
-  {{/if}} {{/each}}
-</ul>
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn" onclick="test()">Attack!</button>
+<br>
+<div id="combatText"></div>
 
-<h2>Your Characters!</h2>
-
-<ul>
-  {{#each hero}} {{#else dead}}
-  <h1>{{name}}</h1>
-  <p>Hero stats: A{{attack}} D{{defense}}</p>
-  <p>Current HP: {{hp}}</p>
-  {{!-- add more here --}}
-  <button data-id="{{id}}" class="btn btn-large waves-effect waves-light blue darken-3 white-text">Play this Hero</button>
-  {{/else}} {{/each}}
-</ul>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script> {{!--
+<script src="/assets/js/game.js" type="text/javascript"></script> --}}

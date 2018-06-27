@@ -19,8 +19,9 @@ module.exports = function(app) {
   app.get("/newhero", function(req, res) {
     res.render('createhero');
   });
-
-
+  app.get("/game", function(req, res) {
+    res.render('game');
+  });
   app.get("/stats", function(req, res) {
     res.render('stats');
   });
