@@ -5,15 +5,15 @@ module.exports = function(sequelize, DataTypes) {
       unique: true,
       allowNull: false,
     },
-    defense: DataTypes.UNSIGNED.ZEROFILL.INTEGER,
-    attack: DataTypes.UNSIGNED.ZEROFILL.INTEGER,
-    health: DataTypes.UNSIGNED.ZEROFILL.INTEGER,
+    defense: DataTypes.INTEGER,
+    attack: DataTypes.INTEGER,
+    health: DataTypes.INTEGER,
     wins: {
-      type: DataTypes.UNSIGNED.ZEROFILL.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     loses: {
-      type: DataTypes.UNSIGNED.ZEROFILL.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     }
   });
