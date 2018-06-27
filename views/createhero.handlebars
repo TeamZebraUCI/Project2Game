@@ -57,22 +57,22 @@
         let newChar = {
             "name": $("#name").val().trim(),
             "attack": parseInt($("#Attack").attr("value")),
-            "defense": parseInt($("#Defense").attr("value"))
-             "health": parseInt($("#Health").attr("value")),
-            }
-            console.log(newChar.health);
-            createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
-        });
-        function createChar(name, attack, defense, health) {
-            $.post("/api/create", {
-                name: name,
-                attack: attack,
-                defense: defense,
-                health: health
-            }).then(() => {
-                location.reload();
-            });
+            "defense": parseInt($("#Defense").attr("value")),
+            "health": parseInt($("#Health").attr("value"))
+        }
+        console.log(newChar);
+        createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
     });
+    function createChar(name, attack, defense, health) {
+        $.post("/api/create", {
+            name: name,
+            attack: attack,
+            defense: defense,
+            health: health
+        }).then(() => {
+            location.reload();
+        });
+    }
 </script>
 <!-- Custom Script -->
 <!-- Compiled and minified JavaScript -->
