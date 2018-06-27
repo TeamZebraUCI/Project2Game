@@ -15,10 +15,13 @@ function test() {
 $(document).ready(function () {
     // set the health for the player and the boss
     let playerHealth = 30;
-    let dragonHealth = 30;
+    let dragonHealth = 50;
     $("#playerHealthBar").text("Your health: " + playerHealth);
     $("#bossHealthBar").text("Boss health: " + dragonHealth);
+    let potionCount = 3;
+    $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
 
+    // =======================================================================================================
     // push the Attack button to play
     $("#attackBtn").on("click", function (event) {
         let playerDamage = Math.floor(Math.random() * 5) + 1;
@@ -46,14 +49,44 @@ $(document).ready(function () {
         if (playerHealth <= 0) {
             // the boss wins
             $("#combatText").text("You've been slain... Your story ends here...");
-            // prevent button from working after the game ends
+            // prevent action buttons from working after the game ends
             $("#attackBtn").attr("onclick", "").unbind("click");
+            $("#potionBtn").attr("onclick", "").unbind("click");
         }
         if (dragonHealth <= 0) {
             // the player wins
             $("#combatText").text("Victory! You've slain the dragon!");
-            // prevent button from working after the game ends
+            // prevent action buttons from working after the game ends
             $("#attackBtn").attr("onclick", "").unbind("click");
+            $("#potionBtn").attr("onclick", "").unbind("click");
         }
     });
+
+    // =======================================================================================================
+    // push the potion button to heal your character
+    $("#potionBtn").on("click", function (event) {
+        // restore the player's health
+        playerHealth = 30;
+
+        // combat text displays the character used a potion
+        $("#combatText").text("Your wounds have healed!");
+
+        // remove one health potion from the player's inventory after use
+        potionCount--;
+
+        // update the player's potion counter
+        $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
+
+        // prevent the player from using anymore potions once they reach 0
+        if (potionCount === 0) {
+            // update potionCountNum
+            $("#potionCountNum").text("Oh crap! You have " + potionCount + " health potions remaining!");
+
+            // inform the player that they are out of health potions
+            $("#combatText").text("Shit! You're out of health potions!");
+            
+            // prevent the button working when the player is out of potions
+            $("#potionBtn").attr("onclick", "").unbind("click");
+        }
+    })
 });
