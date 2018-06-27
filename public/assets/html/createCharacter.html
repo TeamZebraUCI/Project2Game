@@ -9,9 +9,10 @@
     <link type="text/css" rel="stylesheet" href="../css/style.css">
 
     <!-- Materialize Compiled and minified CSS -->
-    <link rel="icon" href="https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/p/plains-zebra_thumb.JPG" sizes="32x32" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-	<title>Create Character</title>
+    <link rel="icon" href="https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/p/plains-zebra_thumb.JPG"
+        sizes="32x32" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <title>Create Character</title>
 </head>
 
 <body>
@@ -40,7 +41,7 @@
             </li>
         </ul>
     </div>
-        <br>
+    <br>
     <button class='btn btn-large waves-effect waves-light grey darken-3 white-text' id="submitBtn">submit</button>
 
 
@@ -74,10 +75,22 @@
             let newChar = {
                 "name": $("#name").val().trim(),
                 "attack": parseInt($("#Attack").attr("value")),
-                "defense": parseInt($("#Defense").attr("value"))
+                "defense": parseInt($("#Defense").attr("value")),
+                "health": parseInt($("#Health").attr("value")),
             }
-            console.log(newChar);
+            console.log(newChar.health);
+            createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
         });
+        function createChar(name, attack, defense, health) {
+            $.post("/api/create", {
+                name: name,
+                attack: attack,
+                defense: defense,
+                health: health
+            }).then(() => {
+                location.reload();
+            });
+        }
     </script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
