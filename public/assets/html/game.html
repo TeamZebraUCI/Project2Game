@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
     <!-- link to my js file -->
-    <script type="text/javascript" src="../../../models/game.js"></script>
+    <script type="text/javascript" src="../js/game.js"></script>
 
     <title>Quest</title>
 </head>
+
 <!--===READY, SET, GO!=========================================================================================================================================-->
 
 <body>
@@ -27,15 +28,22 @@
     <div>
         <h5>Slay the dragon to collect your reward!</h5>
     </div>
+
 <!--===BUTTONS IN GAME========================================================================================================================================-->
-    <button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="start()">Start</button>
-    <div id="startGame"></div>
+    <button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="startGame()">Start</button>
+    <!-- <div id="startGame" onclick="startGame()"></div> -->
 
     <h4 id="playerHealthBar"></h4>
     <h4 id="bossHealthBar"></h4>
 
+    <h5 id="potionCountNum"></h5>
+
+
     <button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn" onclick="test()">Attack!</button>
+
+    <button class='btn waves-effect waves-light grey darken-3 white-text' id="potionBtn" onclick="test()">Health Potion</button>
     <br>
+
 
     <h5 id="combatText"></h5>
 
