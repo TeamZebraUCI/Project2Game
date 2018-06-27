@@ -40,9 +40,17 @@
     background-size: cover;
 } */
 body{
-    background: url('assassinBG.jpg');
-    background-repeat: contain;
+    background: black url('gamebg.jpg') no-repeat;
+    background-position: center center;
 }
+hr{
+    display: block;
+    height: 1px;
+    border:0;
+    border-top: 1px solid white; 
+    margin: 1em 0 1em 0;
+    padding: 0;
+    }
 h1{
   font-style: italic;
 }
