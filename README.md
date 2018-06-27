@@ -9,20 +9,19 @@
 
 
 
-
-
-
-## Images
+### Images
 ![SignUp](https://i.imgur.com/ZAWTTkc.jpg)
 
-# Our Characters! 
+## Our Characters! 
 
-## Scion
+### Scion
 
-A scion is perfection in body, mind and grace. Raised by the most intelligent and wealthy, taught to fight by our best warriors, you lived a life of comfort and how have you paid for your fortune and gifts? With innocent blood. Sin has lead you here, your path inked in blood of gratuitous murder. How will the crowning jewel of our civilization survive in darkness and depravity? Learn well the lessons you will face in *come up with a name* it is your only hope in finding your way home.
+A scion is perfection in body, mind and grace. Raised by the most intelligent and wealthy, taught to fight by our best warriors, you lived a life of comfort and how have you paid for your fortune and gifts? With innocent blood. Sin has lead you here, your path inked in blood of gratuitous murder. How will the crowning jewel of our civilization survive in darkness and depravity? Learn well the lessons you will face Sovngarde, it is your only hope in finding your way home.
 
 
+### Templar
 
+You were once the chosen of God. A templar you swore, sinew and soul, to serve God and His people only to smite it all asunder with one sinful blow. For years you built a life upon faith and is that not the greatest folly of all? To lose faith when it's all you have left? The more you hide your shadow, the more evil it grows. Watch your prayers return unanswered as you earn your redemption in Sovngarde.
 
 
 
