@@ -1,0 +1,58 @@
+/* Add custom font here */
+/* @font-face {
+    font-family: ??????;
+    src: url();
+} */
+*{
+  margin:0;
+  padding:0;
+  color: white;
+  font-family: ESO;
+}
+@font-face {
+    font-family: ESO;
+    src: url("Planewalker.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ESO;
+    font-weight: bold;
+    src: url("Planewalker\ Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: ESO;
+    font-weight: italic;
+    src: url("Planewalker\ Italic.otf") format("opentype");
+}
+/* #background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(style.css) no-repeat;
+    background-size: cover;
+} */
+body{
+    background: black url('gamebg.jpg') no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+}
+hr{
+    display: block;
+    height: 1px;
+    border:0;
+    border-top: 1px solid white; 
+    margin: 1em 0 1em 0;
+    padding: 0;
+    }
+h1{
+  font-style: italic;
+}
+
