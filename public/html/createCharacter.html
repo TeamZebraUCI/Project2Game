@@ -9,8 +9,7 @@
     <link type="text/css" rel="stylesheet" href="../css/style.css">
 
     <!-- Materialize Compiled and minified CSS -->
-    <link rel="icon" href="https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/p/plains-zebra_thumb.JPG"
-        sizes="32x32" />
+    <link rel="icon" href="https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/p/plains-zebra_thumb.JPG"sizes="32x32" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <title>Create Character</title>
 </head>
@@ -44,58 +43,12 @@
     <br>
     <button class='btn btn-large waves-effect waves-light grey darken-3 white-text' id="submitBtn">submit</button>
 
-
-    <script>
-        let skillPonints = 20;
-        $("#skillPoints").text("Skill Points: " + skillPonints);
-
-        // increase decrease skill value
-        $(".skills button").on("click", function (event) {
-            event.preventDefault();
-            let skill = $(this).attr("data-skill");
-            let skillVal = parseInt($("#" + skill).attr("value"));
-            if ($(this).text() == "+") {
-                if (skillPonints > 0) {
-                    skillPonints--;
-                    skillVal++;
-                }
-            } else if ($(this).text() == "-") {
-                if (skillVal > 20) {
-                    skillPonints++;
-                    skillVal--;
-                }
-            }
-            $("#skillPoints").text("Skill Points: " + skillPonints);
-            $("#" + skill).attr("value", skillVal.toString());
-            $("#" + skill + " .skillValStr").text(skill + " : " + skillVal.toString());
-        });
-
-        $("#submitBtn").on("click", function (event) {
-            event.preventDefault();
-            let newChar = {
-                "name": $("#name").val().trim(),
-                "attack": parseInt($("#Attack").attr("value")),
-                "defense": parseInt($("#Defense").attr("value")),
-                "health": parseInt($("#Health").attr("value")),
-            }
-            console.log(newChar);
-            createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
-        });
-        function createChar(name, attack, defense, health) {
-            $.post("/api/create", {
-                name: name,
-                attack: attack,
-                defense: defense,
-                health: health
-            }).then(() => {
-                location.reload();
-            });
-        }
-    </script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- createCharacter.js -->
+    <script src="/js/createCharacter.js"></script>
 </body>
 
 </html>
