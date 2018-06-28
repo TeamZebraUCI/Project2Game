@@ -25,7 +25,7 @@
     font-weight: italic;
     src: url("Planewalker\ Italic.otf") format("opentype");
 }
-#background {
+.background {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -54,6 +54,15 @@ hr{
     }
 h1{
   font-style: italic;
+}
+.animate{
+    position: relative;
+    margin: 5em;
+    display:inline-block;
+}
+.sword{
+    width: 100px;
+    height: 100px;
 }
 button:hover{
     border: solid 1px red;
