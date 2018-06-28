@@ -17,7 +17,7 @@ module.exports = function (app) {
 
   //given credentials for a user{username,password},
   //  return result={usernameFound,passwordMatch}, result returns two booleans
-  app.post("/api/findUser",(req,res)=>{
+  app.post("/api/login",(req,res)=>{
     db.Users.findOne({ 
       //search for username
       where: {username:req.body.username}
