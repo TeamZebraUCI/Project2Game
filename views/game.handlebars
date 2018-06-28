@@ -1,18 +1,38 @@
+<div class="background"></div>
 <h3>BOSS: Fire Dragon</h3>
 <div>
   <h5>Slay the dragon to collect your reward!</h5>
 </div>
+
 <!--===BUTTONS IN GAME========================================================================================================================================-->
-<button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="start()">Start</button>
-<div id="startGame"></div>
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="startGame()">Start</button>
+<!-- <div id="startGame" onclick="startGame()"></div> -->
 
 <h4 id="playerHealthBar"></h4>
 <h4 id="bossHealthBar"></h4>
 
-<button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn" onclick="test()">Attack!</button>
-<br>
-<div id="combatText"></div>
+<h5 id="potionCountNum"></h5>
 
+
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn" onclick="test()">Attack!</button>
+
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="potionBtn" onclick="test()">Health Potion</button>
+<br>
+
+
+<h5 id="combatText"></h5>
+
+<div class='animate'>
+  <img src="/assets/css/sword.png" class="sword">
+</div>
+
+
+<!--===MATERIALIZE NONSENSE====================================================================================================================================-->
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<<<<<<< HEAD
 <script src="/js/game.js" type="text/javascript"></script>
+=======
+<script type="text/javascript" src="/assets/js/game.js"></script>
+<script type="text/javascript" src="/assets/js/anime.js"></script>
+>>>>>>> origin/master

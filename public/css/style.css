@@ -25,7 +25,7 @@
     font-weight: italic;
     src: url("Planewalker\ Italic.otf") format("opentype");
 }
-/* #background {
+.background {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -36,9 +36,9 @@
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(style.css) no-repeat;
+    background: url('gamebg.jpg') no-repeat;
     background-size: cover;
-} */
+}
 body{
     background: black url('defaultbg.jpg') no-repeat;
     background-attachment: fixed;
@@ -55,4 +55,32 @@ hr{
 h1{
   font-style: italic;
 }
-
+.animate{
+    position: relative;
+    margin: 5em;
+    display:inline-block;
+}
+.sword{
+    width: 100px;
+    height: 100px;
+}
+button:hover{
+    border: solid 1px red;
+}
+#attackBtn:active{
+    animation: shake 0.5s;
+    opacity: 0.2;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
