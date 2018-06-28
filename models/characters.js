@@ -17,5 +17,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
     }
   });
+  //Code for foreign key
+  Characters.associate = function(models) {
+    // Associating Characters with Users
+    Characters.hasMany(models.Users, {
+      onDelete: "cascade"
+    });
+  };
   return Characters;
 };
+
+

@@ -55,8 +55,11 @@ hr{
 h1{
   font-style: italic;
 }
+button:hover{
+    border: solid 1px red;
+}
 #attackBtn:active{
-    animation: shake 1s; 
+    animation: shake 0.5s;
     opacity: 0.2;
 }
 @keyframes shake {
