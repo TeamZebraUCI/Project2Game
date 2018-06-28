@@ -14,18 +14,29 @@ module.exports = function (app) {
       // res.status(422).json(err.errors[0].message);
     });
   });
-  app.post('/api/login', function (req, res) {
-    console.log(req.body);
-    db.Users.findOne({
-      where: {
-        userName: req.body.name,
-        password: req.body.password
-      }.then(data => {
-        // If user exists in database go to createhero
-      if(data != ""){
-        res.render('createhero');
+
+  //given credentials for a user{username,password},
+  //  return result={usernameFound,passwordMatch}, result returns two booleans
+  app.post("/api/findUser",(req,res)=>{
+    db.Users.findOne({ 
+      //search for username
+      where: {username:req.body.username}
+    }).then(dbResult=>{
+      //default that credentials not found
+      let response = {
+          usernameFound: false,
+          passwordMatch: false
       }
-      })
+      //if username exists
+      if(dbResult != null){
+          response.usernameFound = true;
+          //if passwords match
+          if(dbResult.password == req.body.password){
+              response.passwordMatch = true;
+          }
+      }
+      res.json(response);
     });
   });
-}
+
+};
