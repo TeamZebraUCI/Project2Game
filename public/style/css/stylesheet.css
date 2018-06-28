@@ -36,11 +36,11 @@
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url('gamebg.jpg') no-repeat;
+    background: url('/style/images/gamebg.jpg') no-repeat;
     background-size: cover;
 }
 body{
-    background: black url('defaultbg.jpg') no-repeat;
+    background: black url('/style/images/defaultbg.jpg') no-repeat;
     background-attachment: fixed;
     background-position: center center;
 }
