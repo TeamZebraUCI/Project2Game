@@ -4,10 +4,6 @@
 // action performed, result shown, next round starts
 
 // =======================================================================================================
-// testing connection to game.html
-function test() {
-    document.getElementById("combatText").innerHTML = ("hello world");
-}
 
 function startGame() {
     let playerHealth = 30;
