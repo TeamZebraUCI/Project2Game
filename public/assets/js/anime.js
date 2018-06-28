@@ -1,15 +1,19 @@
 const swordAttack = anime({
     targets: 'img.sword',
     translateY: [
-        { value: -200, duration: 500 },
+        { value: -100, duration: 500 },
         { value: 0, duration: 800 }
     ],
     rotate: {
-        value: '1turn',
+        value: -450,
         easing: 'easeInOutSine'
     },
     autoplay: false
 });
+anime({
+    targets:'img.sword',
+    rotate: -90
+})
 $("#attackBtn").on("click", function (event) {
     swordAttack.restart();
 });
