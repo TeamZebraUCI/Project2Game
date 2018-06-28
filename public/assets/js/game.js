@@ -10,9 +10,12 @@ function test() {
 }
 
 function startGame() {
-    let playerHealth = 30;
+    let playerHealth = 50;
+    // let playerHealth = CharacterData.health; +++++++++++++++++++++++++++++++++++++++++++
     let dragonHealth = 50;
+    // let dragonHealth = 100; +++++++++++++++++++++++++++++++++++++++++++
     $("#playerHealthBar").text("Your health: " + playerHealth);
+    // $("#playerHealthBar").text(CharacterData.name + ": " + playerHealth); +++++++++++++++++++++++++++++++++++++++++++
     $("#bossHealthBar").text("Boss health: " + dragonHealth);
     let potionCount = 3;
     $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
@@ -22,9 +25,14 @@ function startGame() {
 // game logic
 $(document).ready(function () {
     // set the health for the player and the boss
-    let playerHealth = 30;
+    let playerHealth = 50;
+    // let playerHealth = CharacterData.health; +++++++++++++++++++++++++++++++++++++++++++
+    let playerDefense = 30;
     let dragonHealth = 50;
+    // let dragonHealth = 100; +++++++++++++++++++++++++++++++++++++++++++
     $("#playerHealthBar").text("Your health: " + playerHealth);
+    // $("#playerHealthBar").text(CharacterData.name + ": " + playerHealth); +++++++++++++++++++++++++++++++++++++++++++
+    $("#playerArmor").text("You have " + playerDefense + " armor remaining")
     $("#bossHealthBar").text("Boss health: " + dragonHealth);
     let potionCount = 3;
     $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
@@ -34,7 +42,9 @@ $(document).ready(function () {
     $("#attackBtn").on("click", function (event) {
         if (playerHealth || dragonHealth > 0) {
             let playerDamage = Math.floor(Math.random() * 5) + 1;
-            let dragonDamage = Math.floor(Math.random() * 5) + 1;
+            // let playerDamage = CharacterData.attack; +++++++++++++++++++++++++++++++++++++++++++
+            // let dragonDamage = Math.floor(Math.random() * 5) + 1;
+            let dragonDamage = 10;
 
             let playerNum = Math.floor((Math.random() * 3)) + 1;
             let dragonNum = Math.floor((Math.random() * 3)) + 1;
@@ -48,14 +58,19 @@ $(document).ready(function () {
                 // Subtract the damage amount from the player's health.
                 playerHealth -= dragonDamage;
                 $("#combatText").text("Damn! The dragon slashed you for " + dragonDamage + " damage");
-
+                
+                // wear down armor
+                playerDefense -= dragonDamage;
+                $("#playerArmor").text("You have " + playerDefense + " armor remaining")
             }
 
             // update characters health after each round
             $("#playerHealthBar").text("Your health: " + playerHealth);
+            // $("#playerHealthBar").text(CharacterData.name + ": " + playerHealth); +++++++++++++++++++++++++++++++++++++++++++
             $("#bossHealthBar").text("Boss health: " + dragonHealth);
         }
         if (playerHealth <= 0) {
+            // dragon wins
             // disable buttons after game ends
             $("#attackBtn").prop("disabled", true);
             $("#potionBtn").prop("disabled", true);
@@ -64,6 +79,7 @@ $(document).ready(function () {
             $("#combatText").text("You've been slain... Your story ends here...");
         }
         if (dragonHealth <= 0) {
+            // player wins
             // disable buttons after game ends
             $("#attackBtn").prop("disabled", true);
             $("#potionBtn").prop("disabled", true);
@@ -78,8 +94,10 @@ $(document).ready(function () {
     $("#potionBtn").on("click", function (event) {
         if (potionCount > 0) {
             // restore the player's health
-            playerHealth = 30;
+            playerHealth = 50;
+            // let playerHealth = CharacterData.health; +++++++++++++++++++++++++++++++++++++++++++
             $("#playerHealthBar").text("Your health: " + playerHealth);
+            // $("#playerHealthBar").text(CharacterData.name + ": " + playerHealth); +++++++++++++++++++++++++++++++++++++++++++
 
             // combat text displays the character used a potion
             $("#combatText").text("Your wounds have healed!");
@@ -103,9 +121,16 @@ $(document).ready(function () {
     // push start button to reset game
     $("#startBtn").on("click", function (event) {
         // reset all numbers to restart game
-        playerHealth = 30;
+        playerHealth = 50;
+        // let playerHealth = CharacterData.health; +++++++++++++++++++++++++++++++++++++++++++
         $("#playerHealthBar").text("Your health: " + playerHealth);
+        // $("#playerHealthBar").text(CharacterData.name + ": " + playerHealth); +++++++++++++++++++++++++++++++++++++++++++
+        
+        let playerDefense = 30;
+        $("#playerArmor").text("You have " + playerDefense + " armor remaining")
+       
         dragonHealth = 50;
+        // dragonHealth = 100; +++++++++++++++++++++++++++++++++++++++++++
         $("#bossHealthBar").text("Boss health: " + dragonHealth);
         potionCount = 3;
         $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")

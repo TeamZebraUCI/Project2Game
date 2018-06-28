@@ -12,6 +12,12 @@
     <link rel="icon" href="https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/p/plains-zebra_thumb.JPG"
         sizes="32x32" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    
+    <!-- link to game.js file -->
+    <script type="text/javascript" src="../js/game.js"></script>
+
+    <!-- link to game.html file -->
+    <a href="game.html"></a>
     <title>Create Character</title>
 </head>
 
@@ -24,20 +30,20 @@
         <br>
         <h3 id="skillPoints"></h3>
         <ul class="skills">
-            <li id="Defense" value="20">
-                <h4 class="skillValStr">Defense : 20</h4>
-                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Defense">-</button>
-                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Defense">+</button>
+            <li id="Health" value="50">
+                <h4 class="skillValStr">Health : 50</h4>
+                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Health">-</button>
+                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Health">+</button>
             </li>
-            <li id="Attack" value="20">
-                <h4 class="skillValStr">Attack : 20</h4>
+            <li id="Attack" value="10">
+                <h4 class="skillValStr">Attack : 10</h4>
                 <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Attack">-</button>
                 <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Attack">+</button>
             </li>
-            <li id="Health" value="20">
-                <h4 class="skillValStr">Health : 20</h4>
-                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Health">-</button>
-                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Health">+</button>
+            <li id="Defense" value="10">
+                <h4 class="skillValStr">Defense : 10</h4>
+                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Defense">-</button>
+                <button class='btn waves-effect waves-light grey darken-3 white-text' data-skill="Defense">+</button>
             </li>
         </ul>
     </div>
@@ -46,8 +52,8 @@
 
 
     <script>
-        let skillPonints = 20;
-        $("#skillPoints").text("Skill Points: " + skillPonints);
+        let skillPoints = 10;
+        $("#skillPoints").text("Skill Points: " + skillPoints);
 
         // increase decrease skill value
         $(".skills button").on("click", function (event) {
@@ -55,17 +61,17 @@
             let skill = $(this).attr("data-skill");
             let skillVal = parseInt($("#" + skill).attr("value"));
             if ($(this).text() == "+") {
-                if (skillPonints > 0) {
-                    skillPonints--;
+                if (skillPoints > 0) {
+                    skillPoints--;
                     skillVal++;
                 }
             } else if ($(this).text() == "-") {
-                if (skillVal > 20) {
-                    skillPonints++;
+                if (skillVal > 10) {
+                    skillPoints++;
                     skillVal--;
                 }
             }
-            $("#skillPoints").text("Skill Points: " + skillPonints);
+            $("#skillPoints").text("Skill Points: " + skillPoints);
             $("#" + skill).attr("value", skillVal.toString());
             $("#" + skill + " .skillValStr").text(skill + " : " + skillVal.toString());
         });
@@ -74,19 +80,19 @@
             event.preventDefault();
             let newChar = {
                 "name": $("#name").val().trim(),
+                "health": parseInt($("#Health").attr("value")),
                 "attack": parseInt($("#Attack").attr("value")),
                 "defense": parseInt($("#Defense").attr("value")),
-                "health": parseInt($("#Health").attr("value")),
             }
             console.log(newChar);
-            createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
+            createChar(newChar.name, newChar.health, newChar.attack, newChar.defense);
         });
-        function createChar(name, attack, defense, health) {
+        function createChar(name, health, attack, defense) {
             $.post("/api/create", {
                 name: name,
+                health: health,
                 attack: attack,
-                defense: defense,
-                health: health
+                defense: defense
             }).then(() => {
                 location.reload();
             });
@@ -96,6 +102,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script src="../js/game.js"></script>
 </body>
 
 </html>
