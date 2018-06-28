@@ -16,14 +16,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
     }
-  });
+  }, { fields: [ 'name', 'defense', 'attack', 'health', 'wins', 'loses' ] });
   //Code for foreign key
-  Characters.associate = function(models) {
-    // Associating Characters with Users
-    Characters.hasMany(models.Users, {
-      onDelete: "cascade"
-    });
-  };
+  // Characters.associate = function(models) {
+  //   // Associating Characters with Users
+  //   Characters.hasMany(models.Users, {
+  //     onDelete: "cascade"
+  //   });
+  // };
   return Characters;
 };
 

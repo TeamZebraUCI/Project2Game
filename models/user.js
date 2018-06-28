@@ -9,6 +9,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  });
+  }, { fields: [ 'userName', 'password' ] });
   return Users;
 };
