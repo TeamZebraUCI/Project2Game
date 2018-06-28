@@ -11,19 +11,19 @@
 }
 @font-face {
     font-family: ESO;
-    src: url("Planewalker.otf") format("opentype");
+    src: url("../fonts/Planewalker.otf") format("opentype");
 }
 
 @font-face {
     font-family: ESO;
     font-weight: bold;
-    src: url("Planewalker\ Bold.otf") format("opentype");
+    src: url("../fonts/Planewalker\ Bold.otf") format("opentype");
 }
 
 @font-face {
     font-family: ESO;
     font-weight: italic;
-    src: url("Planewalker\ Italic.otf") format("opentype");
+    src: url("../fonts/Planewalker\ Italic.otf") format("opentype");
 }
 .background {
     position: fixed;
@@ -36,11 +36,11 @@
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url('/style/images/gamebg.jpg') no-repeat;
+    background: url('../images/gamebg.jpg') no-repeat;
     background-size: cover;
 }
 body{
-    background: black url('/style/images/defaultbg.jpg') no-repeat;
+    background: black url('../images/gamebg.jpg') no-repeat;
     background-attachment: fixed;
     background-position: center center;
 }
