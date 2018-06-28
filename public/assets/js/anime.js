@@ -2,7 +2,7 @@ const swordAttack = anime({
     targets: 'img.sword',
     translateY: [
         { value: -100, duration: 500 },
-        { value: 0, duration: 800 }
+        { value: 0, duration: 1000 }
     ],
     rotate: {
         value: -450,
