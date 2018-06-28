@@ -4,7 +4,7 @@
 // action performed, result shown, next round starts
 
 // =======================================================================================================
-
+//Set counts for user character
 function startGame() {
     let playerHealth = 30;
     let dragonHealth = 50;
@@ -15,18 +15,12 @@ function startGame() {
 }
 
 // =======================================================================================================
-// game logic
+//Starting Game
 $(document).ready(function () {
-    // set the health for the player and the boss
-    let playerHealth = 30;
-    let dragonHealth = 50;
-    $("#playerHealthBar").text("Your health: " + playerHealth);
-    $("#bossHealthBar").text("Boss health: " + dragonHealth);
-    let potionCount = 3;
-    $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
+  startGame();
 
     // =======================================================================================================
-    // push the Attack button to play
+    //Push the attack button to fight dragon
     $("#attackBtn").on("click", function (event) {
         if (playerHealth || dragonHealth > 0) {
             let playerDamage = Math.floor(Math.random() * 5) + 1;
