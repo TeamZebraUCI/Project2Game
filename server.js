@@ -38,5 +38,6 @@ require("./routes/api-routes.js")(app);
 require("./routes/handlebars-routes.js")(app);
 
 db.sequelize.sync({ force: true }).then(function () {
-    app.listen(PORT, () => console.log(`Listening on port http://localhost:${PORT}...`));
+    console.log()
+    app.listen(PORT, () => console.log(`Listening on port http://localhost:${PORT} `));
 });
