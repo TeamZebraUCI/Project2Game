@@ -13,7 +13,7 @@ CREATE TABLE usersLogin(
   PRIMARY KEY (id)
 );
 
-
+  
 CREATE TABLE characters(
   id INT NOT NULL AUTO_INCREMENT,
   userId VARCHAR(100) NOT NULL,
