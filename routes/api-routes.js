@@ -18,5 +18,4 @@ module.exports = function(app) {
       // res.status(422).json(err.errors[0].message);
     });
   });
-
 };
