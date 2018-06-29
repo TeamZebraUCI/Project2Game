@@ -138,7 +138,6 @@ $(document).ready(function () {
             // update combat text to display result of game
             $("#combatText").text("You've been slain... Your story ends here...");
         }
-
         if (dragonHealth <= 0) {
             // player wins
             // disable buttons after game ends
