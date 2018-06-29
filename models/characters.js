@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Characters = sequelize.define('Characters', {
+  const Character = sequelize.define('Character', {
     name: {
       type: DataTypes.STRING,
       unique: true,
@@ -29,11 +29,11 @@ module.exports = function(sequelize, DataTypes) {
   //Code for foreign key
   // Characters.associate = function(models) {
   //   // Associating Characters with Users
-  //   Characters.hasMany(models.Users, {
+  //   Character.hasMany(models.User, {
   //     onDelete: "cascade"
   //   });
   // };
-  return Characters;
+  return Character;
 };
 
 
