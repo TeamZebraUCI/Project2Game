@@ -42,7 +42,8 @@
     background: url('../images/gamebg.jpg') no-repeat;    
 }
 .statsbg {    
-    background: url('../images/statsbg.jpg') no-repeat;    
+    background: url('../images/statsbg.jpg') no-repeat;  
+    background-size: cover;
 }
 body{
     background: black url('../images/defaultbg.jpg') no-repeat;
