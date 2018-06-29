@@ -17,11 +17,12 @@ function startGame() {
 // =======================================================================================================
 //Starting Game
 $(document).ready(function () {
-  startGame();
+    startGame();
 
     // =======================================================================================================
     //Push the attack button to fight dragon
     $("#attackBtn").on("click", function (event) {
+
         if (playerHealth || dragonHealth > 0) {
             let playerDamage = Math.floor(Math.random() * 5) + 1;
             let dragonDamage = Math.floor(Math.random() * 5) + 1;
@@ -33,8 +34,7 @@ $(document).ready(function () {
                 // Subtract the damage amount from the dragon's health.
                 dragonHealth -= playerDamage;
                 $("#combatText").text("Clean hit! You slashed the dragon for " + playerDamage + " damage");
-            }
-            else {
+            } else {
                 // Subtract the damage amount from the player's health.
                 playerHealth -= dragonDamage;
                 $("#combatText").text("Damn! The dragon slashed you for " + dragonDamage + " damage");
@@ -52,7 +52,18 @@ $(document).ready(function () {
 
             // update combat text to display result of game
             $("#combatText").text("You've been slain... Your story ends here...");
+            //post when game is over and you have lost to dragon
+            $.post("/api/loseGame", playerHealth, dragonHealth)
+                // on success, run this callback
+                .then(function (data) {
+                    // log the data we found
+                    console.log(data);
+                    // tell the user we're adding a character with an alert window
+                    alert("Adding character...");
+                });
+
         }
+
         if (dragonHealth <= 0) {
             // disable buttons after game ends
             $("#attackBtn").prop("disabled", true);
@@ -60,6 +71,15 @@ $(document).ready(function () {
 
             // update combat text to display result of game
             $("#combatText").text("Victory! You've slain the dragon!");
+            //post when game is over and you have defeated dragon
+            $.post("/api/winGame", playerHealth, dragonHealth)
+                // on success, run this callback
+                .then(function (data) {
+                    // log the data we found
+                    console.log(data);
+                    // tell the user we're adding a character with an alert window
+                    alert("Adding character...");
+                });
         }
     });
 
@@ -79,8 +99,7 @@ $(document).ready(function () {
 
             // update the player's potion counter
             $("#potionCountNum").text("You have " + potionCount + " health potions remaining. Use them wisely!")
-        }
-        else {
+        } else {
             // update potionCountNum
             $("#potionCountNum").text("Oh crap! You have " + potionCount + " health potions remaining!");
 
