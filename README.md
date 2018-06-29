@@ -42,3 +42,9 @@ You were once the chosen of God. A templar you swore, sinew and soul, to serve G
 ### [Jon](https://github.com/jonjebo)
 
 ### [2Juicy](https://2juicy.github.io/PersonalPortfolio/)
+
+
+# Credits
+
+[ANIME.JS](http://animejs.com/)
+[Materialize](https://materializecss.com/)
