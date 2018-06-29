@@ -1,55 +1,70 @@
 const db = require("../models");
 
+  // given credentials for a user{username,password},
+  //   return result={usernameFound,passwordMatch}, result returns two booleans
+  const findUser = function(credentials,run){
+    // default response
+    let response = {
+      usernameFound: false,
+      passwordMatch: false,
+      userId: null,
+      url: null
+    }
+    // ensure username and password are not blank before searching
+    if(credentials.username && credentials.password){
+      db.User.findOne({
+        where: {username:credentials.username}
+      }).then(dbResult=>{
+      // if username exists
+      if(dbResult != null){
+          response.usernameFound = true;
+          //if passwords match
+          if(dbResult.password == credentials.password){
+              response.passwordMatch = true;
+              response.userId = dbResult.id;
+          }
+      }
+      run(response,credentials);
+    });
+  }
+};
+
 module.exports = function (app) {
-  app.post("/api/signup", function (req, res) {
-    console.log(req.body);
-    db.User.create({
-      userName: req.body.name,
-      password: req.body.password
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
+
+  app.post("/api/signUp",(req, res)=>{
+    findUser(req.body,(searchResults)=>{
+      // if username NOT taken
+      if (!searchResults.usernameFound){
+        // create new user
+        console.log("----CREATING USER");
+        db.User.create(req.body).then((dbResult)=>{
+          // return search results with user new id in response
+          searchResults.userId=dbResult.id;
+          searchResults.url = "/newhero";
+        })
+      }else{
+        console.log("----ALREADY EXISTS");
+        //USER ALREADY EXISTS
+        searchResults.passwordMatch = false;
+        searchResults.userId = null;
+      }
+      res.json(searchResults)
     });
   });
 
-  //given credentials for a user{username,password},
-  //  return result={usernameFound,passwordMatch}, result returns two booleans
-  app.post("/api/login", (req, res) => {
-    db.User.findOne({
-      //search for username
-      where: { username: req.body.username }
-    }).then(dbResult => {
-      //default that credentials not found
-      let response = {
-        usernameFound: false,
-        passwordMatch: false
-      }
-      //if username exists
-      if (dbResult != null) {
-        response.usernameFound = true;
-        //if passwords match
-        if (dbResult.password == req.body.password) {
-          response.passwordMatch = true;
+  app.post("/api/login",(req,res)=>{
+    findUser(req.body,(searchResults)=>{
+      console.log(searchResults);
+      if(searchResults.usernameFound){
+        // if password matches the usernames password
+        if(searchResults.passwordMatch){
+          // credentials check out, log in this user
+          searchResults.url = "/newhero";
         }
       }
-      res.json(response);
+      res.json(searchResults);
     });
   });
 
-  app.post("/api/create", function (req, res) {
-    console.log(req.body);
-    db.Character.create({
-      name: req.body.name,
-      attack: req.body.attack,
-      defense: req.body.defense,
-      health: req.body.health
-    }).then(() => {
-      window.location.href = "/game"
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
-  });
+
 };

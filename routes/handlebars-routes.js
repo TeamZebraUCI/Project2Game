@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render('index', { title: 'Login or Signup'});
   });
+
   app.get("/newhero", function(req, res) {
     res.render('createhero', { title: 'Create Hero!'});
   });
