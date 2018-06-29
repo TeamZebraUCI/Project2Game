@@ -20,20 +20,21 @@ module.exports = function(sequelize, DataTypes) {
     wins: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     loses: {
       type: DataTypes.INTEGER,
       allowNull: true,
     }
   }, { fields: [ 'name', 'defense', 'attack', 'health' ] });
-  //Code for foreign key
-  // Characters.associate = function(models) {
-  //   // Associating Characters with Users
-  //   Character.hasMany(models.User, {
-  //     onDelete: "cascade"
-  //   });
-  // };
   return Character;
+  //Code for foreign key
+  
+  // Character.associate = function(models) {
+   // Associating Characters with Users
+  //   Character.belongsTo(User, {foreignKey: 'id', targetKey: 'owner'});
+  // };
+  
 };
 
 

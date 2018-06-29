@@ -10,5 +10,12 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
   }, { fields: [ 'userName', 'password' ] });
+  
+  User.associate = function(models) {
+    User.hasMany(models.Character, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };

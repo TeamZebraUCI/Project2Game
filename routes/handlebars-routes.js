@@ -18,7 +18,9 @@ module.exports = function(app) {
     res.render('index', { title: 'Login or Signup'});
   });
   app.get("/newhero", function(req, res) {
-    res.render('createhero', { title: 'Create Hero!'});
+    db.User.findOne({where: {id: req.body.id}}).then(function(results) {
+    res.render('createhero', { title: 'Create Hero!', users: results});
+    });
   });
   app.get("/game", function(req, res) {
     db.Character.findAll({}).then(function(results) {

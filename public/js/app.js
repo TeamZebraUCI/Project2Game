@@ -18,7 +18,7 @@ $(document).ready(function () {
         name: userData.name,
         password: userData.password
       }).then(() => {
-         location.reload();
+         window.location.href = "/newhero"
       });
       userInput.val("");
       passwordInput.val("");
@@ -27,7 +27,7 @@ $(document).ready(function () {
         name: userData.name,
         password: userData.password
       }).then(() => {
-        location.reload();
+        window.location.href = "/newhero"
       });
       userInput.val("");
       passwordInput.val("");
