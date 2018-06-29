@@ -21,6 +21,7 @@ module.exports = function(app) {
   app.get("/newhero", function(req, res) {
     res.render('createhero', { title: 'Create Hero!'});
   });
+  
   app.get("/game", function(req, res) {
     db.Character.findAll({}).then(function(results) {
     res.render('game', { title: 'Combat', characters: results});

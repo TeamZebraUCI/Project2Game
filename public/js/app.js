@@ -14,6 +14,7 @@ $(document).ready(() => {
         if(!res.usernameFound){
           $("#msg").text("User Created");
           $("#msg").text("Loging in");
+          // console.log(res);
           window.location.href = res.url;// <--------------------------------------------go to next page
         }else{
           $("#msg").text("Sorry Username already taken, Try a different one");
@@ -25,6 +26,7 @@ $(document).ready(() => {
         console.log(res);
         if(res.usernameFound && res.passwordMatch){
           $("#msg").text("Loging in");
+          // console.log(res);
           window.location.href = res.url;// <--------------------------------------------go to next page
         }
         else if(res.usernameFound && !res.passwordMatch){

@@ -28,18 +28,31 @@ $("#submitBtn").on("click", function (event) {
         "name": $("#name").val().trim(),
         "attack": parseInt($("#Attack").attr("value")),
         "defense": parseInt($("#Defense").attr("value")),
-        "health": parseInt($("#Health").attr("value"))
+        "health": parseInt($("#Health").attr("value")),
+        "owner" : 1 // <-------------------------------- STATIC USER FOR DEV
     }
+
     console.log(newChar);
-    createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
-});
-function createChar(name, attack, defense, health) {
-    $.post("/api/create", {
-        name: name,
-        attack: attack,
-        defense: defense,
-        health: health
-    }).then(() => {
-        window.location.href = "/game"
+
+    $.post("/api/newHero",newChar).then(res=>{
+        console.log(res);
+        if (res.validRequest){
+            if(res.userId){
+                if (Number.isInteger(res.userHeroCount.current)){
+                    if (res.userHeroCount.prev < res.userHeroCount.current){
+                        console.log("Character created!");
+                        window.location.href = res.url;
+                    }
+                    else if (res.userHeroCount.prev == res.userHeroCount.current){
+                        console.log(" character NOT created");
+                    }
+                }
+            }else{
+                console.log(" INVALID USER ID");
+            }
+        }else{
+            console.log(" INVALID REQUEST SENT");
+        }
     });
-}
+
+});
