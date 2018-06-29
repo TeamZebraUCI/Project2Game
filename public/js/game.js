@@ -24,7 +24,7 @@ function test() {
 
 // =======================================================================================================
 // =======================================================================================================
-//Starting Game
+// Game logic
 $(document).ready(function () {
     // set the health for the player
     let playerHealth = 100;
@@ -137,16 +137,6 @@ $(document).ready(function () {
 
             // update combat text to display result of game
             $("#combatText").text("You've been slain... Your story ends here...");
-            //post when game is over and you have lost to dragon
-            $.post("/api/loseGame", playerHealth, dragonHealth)
-                // on success, run this callback
-                .then(function (data) {
-                    // log the data we found
-                    console.log(data);
-                    // tell the user we're adding a character with an alert window
-                    alert("Adding character...");
-                });
-
         }
 
         if (dragonHealth <= 0) {
@@ -157,15 +147,6 @@ $(document).ready(function () {
 
             // update combat text to display result of game
             $("#combatText").text("Victory! You've slain the dragon!");
-            //post when game is over and you have defeated dragon
-            $.post("/api/winGame", playerHealth, dragonHealth)
-                // on success, run this callback
-                .then(function (data) {
-                    // log the data we found
-                    console.log(data);
-                    // tell the user we're adding a character with an alert window
-                    alert("Adding character...");
-                });
         }
         //Added jQuery shake animation to combat text
         $( "#combatText" ).effect( "shake" );
