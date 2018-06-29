@@ -14,15 +14,15 @@ module.exports = function(app) {
 
   // index route loads index.html
   app.get("/", function(req, res) {
-    res.render('index');
+    res.render('index', { title: 'Login or Signup'});
   });
   app.get("/newhero", function(req, res) {
-    res.render('createhero');
+    res.render('createhero', { title: 'Create Hero!'});
   });
   app.get("/game", function(req, res) {
-    res.render('game');
+    res.render('game', { title: 'Combat'});
   });
   app.get("/stats", function(req, res) {
-    res.render('stats');
+    res.render('stats', { title: 'Player Stats!'});
   });
 }

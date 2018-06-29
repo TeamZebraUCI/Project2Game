@@ -14,6 +14,6 @@ anime({
     targets:'img.sword',
     rotate: -90
 })
-$("#attackBtn").on("click", function (event) {
+$("#attackBtn").on("click", event => {
     swordAttack.restart();
 });
