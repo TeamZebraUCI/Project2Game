@@ -40,6 +40,6 @@ function createChar(name, attack, defense, health) {
         defense: defense,
         health: health
     }).then(() => {
-        window.location.href = "/game"
+        window.location.href = "/selecthero"
     });
 }

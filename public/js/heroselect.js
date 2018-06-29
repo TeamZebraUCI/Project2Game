@@ -1,7 +1,11 @@
 $(document).ready(function () {
     $(".hero-select").click(function () {
         let userPick = $(this).val();
-        console.log(userPick);
+        $.get("/game", {
+        id: userPick,
+    }).then(() => {
+        window.location.href = "/game"
+    });
 
     });
 });// document end
