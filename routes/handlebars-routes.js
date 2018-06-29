@@ -25,9 +25,9 @@ module.exports = function(app) {
     res.render('selecthero', { title: 'Select your Hero!', characters: results});
     });
   });
-  app.get("/game", function(req, res) {
-    console.log(req);
-    db.Character.findById(1).then(function(results) {
+  app.get("/game/:id", function(req, res) {
+    console.log(req.params);
+    db.Character.findById(req.params.id).then(function(results) {
     res.render('game', { title: 'Combat', characters: results});
     });
   });
