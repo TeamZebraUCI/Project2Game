@@ -23,7 +23,7 @@ const db = require("../models");
               response.userId = dbResult.id;
           }
       }
-      run(response)
+      run(response,credentials);
     });
   }
 };
@@ -48,16 +48,16 @@ module.exports = function (app) {
   });
 
   app.post("/api/login",(req,res)=>{
-    const searchResults = findUser();
-    // if username was found
-    if(searchResults.usernameFound){
-      // if password matches the usernames password
-      if(searchResults.passwordMatch){
-        // credentials check out, log in this user
-        res.render("createhero");
+    findUser(req.body,(searchResults)=>{
+      if(searchResults.usernameFound){
+        // if password matches the usernames password
+        if(searchResults.passwordMatch){
+          // credentials check out, log in this user
+          res.json(searchResults)
+        }
       }
-    }
-    res.json(searchResults);
+      res.json(searchResults);
+    });
   });
 
 

@@ -10,17 +10,17 @@ const bodyParser = require('body-parser');
 // =============================================================
 const app = express();
 const PORT = process.env.PORT || 3000;
+
 // Requiring our models for syncing
 const db = require("./models");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+// parse application/json
+app.use(bodyParser.json());
 
 // Serve static content for the app from the "public" directory in the application directory.app.use(express.static("public"));
 app.use(express.static("public"));
-
-// parse application/json
-app.use(bodyParser.json());
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
@@ -33,7 +33,6 @@ app.set("view engine", "handlebars");
 require("./routes/handlebars-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-db.sequelize.sync({ force: true }).then(function () {
-    console.log()
-    app.listen(PORT, () => console.log(`Listening on port http://localhost:${PORT} `));
+db.sequelize.sync().then(()=>{
+    app.listen(PORT, () => console.log(`\nListening on port http://localhost:${PORT}`));
 });
