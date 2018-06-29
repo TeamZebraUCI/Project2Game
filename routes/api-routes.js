@@ -12,7 +12,7 @@ const db = require("../models");
     }
     // ensure username and password are not blank before searching
     if(credentials.username && credentials.password){
-      db.Users.findOne({
+      db.User.findOne({
         where: {username:credentials.username}
       }).then(dbResult=>{
       // if username exists
@@ -37,7 +37,7 @@ module.exports = function (app) {
       if (!searchResults.usernameFound){
         // create new user
         console.log("----CREATING USER");
-        db.Users.create(req.body).then((dbResult)=>{
+        db.User.create(req.body).then((dbResult)=>{
           // return search results with user new id in response
           searchResults.userId=dbResult.id;
           searchResults.url = "/newhero";

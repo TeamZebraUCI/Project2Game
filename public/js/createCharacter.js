@@ -40,6 +40,6 @@ function createChar(name, attack, defense, health) {
         defense: defense,
         health: health
     }).then(() => {
-        location.reload();
+        window.location.href = "/game"
     });
 }
