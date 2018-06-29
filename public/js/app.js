@@ -18,7 +18,7 @@ $(document).ready(function () {
         name: userData.name,
         password: userData.password
       }).then(() => {
-         res.redirect("/newhero");
+         location.reload();
       });
       userInput.val("");
       passwordInput.val("");
