@@ -38,7 +38,7 @@ module.exports = function (app) {
         db.Users.create(req.body).then((dbResult)=>{
           // return search results with user new id in response
           searchResults.userId=dbResult.id;
-          res.json(searchResults);
+          // res.json(searchResults);
           // res.redirect("/api/login",req.body);
         })
       }else{
@@ -54,10 +54,12 @@ module.exports = function (app) {
         // if password matches the usernames password
         if(searchResults.passwordMatch){
           // credentials check out, log in this user
-          res.json(searchResults)
+          res.redirect("/newhero");
+          // res.redirect("newhero")
         }
+      }else{
+        res.json(searchResults);
       }
-      res.json(searchResults);
     });
   });
 

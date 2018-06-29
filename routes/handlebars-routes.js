@@ -16,7 +16,9 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render('index');
   });
+
   app.get("/newhero", function(req, res) {
+    console.log(" in handlebars-routes : /newher");
     res.render('createhero');
   });
   app.get("/game", function(req, res) {

@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "Luna",
-    "password": "Papaya321",
+    "username": "root",
+    "password": "root",
     "database": "heroDB",
     "host": "127.0.0.1",
     "dialect": "mysql",
