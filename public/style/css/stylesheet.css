@@ -17,15 +17,15 @@
 @font-face {
     font-family: ESO;
     font-weight: bold;
-    src: url("../fonts/Planewalker\ Bold.otf") format("opentype");
+    src: url("../fonts/PlanewalkerBold.otf") format("opentype");
 }
 
 @font-face {
     font-family: ESO;
     font-weight: italic;
-    src: url("../fonts/Planewalker\ Italic.otf") format("opentype");
+    src: url("../fonts/PlanewalkerItalic.otf") format("opentype");
 }
-.background {
+.background{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -36,11 +36,16 @@
     z-index: -100;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url('../images/gamebg.jpg') no-repeat;
     background-size: cover;
 }
+.gamebg {    
+    background: url('../images/gamebg.jpg') no-repeat;    
+}
+.statsbg {    
+    background: url('../images/statsbg.jpg') no-repeat;    
+}
 body{
-    background: black url('../images/gamebg.jpg') no-repeat;
+    background: black url('../images/defaultbg.jpg') no-repeat;
     background-attachment: fixed;
     background-position: center center;
 }
@@ -55,9 +60,15 @@ hr{
 h1{
   font-style: italic;
 }
+.switch{
+    margin-top: 8px;
+}
+.switch label{
+    font-size: 22px;
+}
 .animate{
     position: relative;
-    margin: 5em;
+    margin: 1em;
     display:inline-block;
 }
 .sword{
@@ -71,6 +82,7 @@ button:hover{
     animation: shake 0.5s;
     opacity: 0.2;
 }
+/* https://www.w3schools.com/howto/howto_css_shake_image.asp */
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
