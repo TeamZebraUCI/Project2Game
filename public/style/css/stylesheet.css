@@ -55,6 +55,12 @@ hr{
 h1{
   font-style: italic;
 }
+.switch{
+    margin-top: 8px;
+}
+.switch label{
+    font-size: 22px;
+}
 .animate{
     position: relative;
     margin: 1em;
