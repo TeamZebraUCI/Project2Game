@@ -1,11 +1,15 @@
-<div class="background"></div>
+<div class="background gamebg"></div>
 <h3>BOSS: Fire Dragon</h3>
-<div>
+  {{#each characters}}
+  <h4>Your Stats</h4>
+  <p class="stats">Attack: <span>{{attack}}</span></p>
+  <p class="stats">Defense: <span>{{defense}}</span></p>
+  <p class="stats">Health: <span>{{health}}</span></p>
+  {{/each}}
   <h5>Slay the dragon to collect your reward!</h5>
-</div>
 
 <!--===BUTTONS IN GAME========================================================================================================================================-->
-<button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn" onclick="startGame()">Start</button>
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="startBtn">Start</button>
 <!-- <div id="startGame" onclick="startGame()"></div> -->
 
 <h4 id="playerHealthBar"></h4>
@@ -15,9 +19,9 @@
 <h5 id="potionCountNum"></h5>
 
 
-<button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn" onclick="test()">Attack!</button>
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="attackBtn">Attack!</button>
 
-<button class='btn waves-effect waves-light grey darken-3 white-text' id="potionBtn" onclick="test()">Health Potion</button>
+<button class='btn waves-effect waves-light grey darken-3 white-text' id="potionBtn">Health Potion</button>
 <br>
 
 

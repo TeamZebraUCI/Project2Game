@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 const path = require("path");
+const db = require("../models");
 
 // Routes
 // =============================================================
@@ -20,9 +21,13 @@ module.exports = function(app) {
     res.render('createhero', { title: 'Create Hero!'});
   });
   app.get("/game", function(req, res) {
-    res.render('game', { title: 'Combat'});
+    db.Character.findAll({}).then(function(results) {
+    res.render('game', { title: 'Combat', characters: results});
+    });
   });
   app.get("/stats", function(req, res) {
-    res.render('stats', { title: 'Player Stats!'});
+    db.Character.findAll({}).then(function(results) {
+    res.render('stats', { title: 'Player Stats!', characters: results});
+    });
   });
 }

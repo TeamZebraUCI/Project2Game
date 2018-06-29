@@ -15,23 +15,23 @@ module.exports = function (app) {
 
   //given credentials for a user{username,password},
   //  return result={usernameFound,passwordMatch}, result returns two booleans
-  app.post("/api/login",(req,res)=>{
-    db.User.findOne({ 
+  app.post("/api/login", (req, res) => {
+    db.User.findOne({
       //search for username
-      where: {username:req.body.username}
-    }).then(dbResult=>{
+      where: { username: req.body.username }
+    }).then(dbResult => {
       //default that credentials not found
       let response = {
-          usernameFound: false,
-          passwordMatch: false
+        usernameFound: false,
+        passwordMatch: false
       }
       //if username exists
-      if(dbResult != null){
-          response.usernameFound = true;
-          //if passwords match
-          if(dbResult.password == req.body.password){
-              response.passwordMatch = true;
-          }
+      if (dbResult != null) {
+        response.usernameFound = true;
+        //if passwords match
+        if (dbResult.password == req.body.password) {
+          response.passwordMatch = true;
+        }
       }
       res.json(response);
     });
@@ -44,7 +44,7 @@ module.exports = function (app) {
       attack: req.body.attack,
       defense: req.body.defense,
       health: req.body.health
-    }).then(()=>{
+    }).then(() => {
       window.location.href = "/game"
     }).catch(function (err) {
       console.log(err);
