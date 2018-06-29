@@ -1,3 +1,5 @@
+const nextPage = function(){};
+
 $(document).ready(() => {
   $("#submit").on("click", function (event) {
     // grab users input
@@ -7,17 +9,28 @@ $(document).ready(() => {
     };
     // validate the username and password are not blank
     if ($('#isNewUser').prop('checked')){
-      console.log("user wants to create account");
       // user wants to create a new account
       $.post("/api/signUp",userCredentials).then((res)=>{
-        console.log(res);
+        if(res.userId != null){
+          // user was successfully created
+          $.get("/newhero");
+        }else if(res.usernameFound){
+          $("#msg").text("Sorry Username already taken, Try a different one");
+        }
       });
     }else{
-      console.log("user wants to login to existing account");
       // user wants to login to existing account
       $.post("/api/login",userCredentials).then((res)=>{
-        console.log(res);
+        if(res.usernameFound && res.passwordMatch){
+          $.get("/newhero");
+        }
+        else if(res.usernameFound && !res.passwordMatch){
+          $("#msg").text("incorrect Password try again");
+        }else if(!res.usernameFound){
+          $("#msg").text("No account with that Username found");
+        }
       });
     }
   });
 });
+

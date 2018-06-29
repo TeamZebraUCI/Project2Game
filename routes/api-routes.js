@@ -35,8 +35,9 @@ module.exports = function (app) {
       // if username NOT taken
       if (!searchResults.usernameFound){
         // create new user
-        db.Users.create(req.body).then(()=>{
-          // login using newly created user
+        db.Users.create(req.body).then((dbResult)=>{
+          // return search results with user new id in response
+          searchResults.userId=dbResult.id;
           res.json(searchResults);
           // res.redirect("/api/login",req.body);
         })
