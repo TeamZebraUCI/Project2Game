@@ -1,49 +1,23 @@
-$(document).ready(function () {
-  // Getting references to our form and input
-  const userInput = $("input#user-input");
-  const passwordInput = $("input#password-input");
-
-  // When the signup button is clicked, we validate the email and password are not blank
-  $("#signup").on("click", function (event) {
-    const userData = {
-      name: userInput.val().trim(),
-      password: passwordInput.val().trim()
+$(document).ready(() => {
+  $("#submit").on("click", function (event) {
+    // grab users input
+    const userCredentials = {
+      username: $("input#user-input").val().trim(),
+      password: $("input#password-input").val()
     };
-    console.log(userData);
-    if (!userData.name || !userData.password) {
-      return;
-    }
-    if ($('#isNewUser').prop('checked')) {
-      $.post("/api/signup", {
-        name: userData.name,
-        password: userData.password
-      }).then(() => {
-        location.reload();
+    // validate the username and password are not blank
+    if ($('#isNewUser').prop('checked')){
+      console.log("user wants to create account");
+      // user wants to create a new account
+      $.post("/api/signUp",userCredentials).then((res)=>{
+        console.log(res);
       });
-      userInput.val("");
-      passwordInput.val("");
-    } else {
-      $.post("/api/login", {
-        name: userData.name,
-        password: userData.password
-      }).then(() => {
-        location.reload();
+    }else{
+      console.log("user wants to login to existing account");
+      // user wants to login to existing account
+      $.post("/api/login",userCredentials).then((res)=>{
+        console.log(res);
       });
-      userInput.val("");
-      passwordInput.val("");
     }
-    // Does a post to the signup route. If successful, we are redirected to the members page
-    // Otherwise we log any errors
-
-
-
-
-
-
-    function signUpUser(name, password) {
-      
-    }
-
-
   });
 });

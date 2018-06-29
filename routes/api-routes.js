@@ -1,42 +1,64 @@
 const db = require("../models");
 
-module.exports = function (app) {
-  app.post("/api/signup", function (req, res) {
-    console.log(req.body);
-    db.Users.create({
-      userName: req.body.name,
-      password: req.body.password
-    }).then(() => {
-      res.redirect("/api/login",req.body);
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
-  });
-
-  //given credentials for a user{username,password},
-  //  return result={usernameFound,passwordMatch}, result returns two booleans
-  app.post("/api/login",(req,res)=>{
-    db.Users.findOne({ 
-      //search for username
-      where: {username:req.body.username}
-    }).then(dbResult=>{
-      //default that credentials not found
-      let response = {
-          usernameFound: false,
-          passwordMatch: false
-      }
-      //if username exists
+  // given credentials for a user{username,password},
+  //   return result={usernameFound,passwordMatch}, result returns two booleans
+  const findUser = function(credentials,run){
+    // default response
+    let response = {
+      usernameFound: false,
+      passwordMatch: false,
+      userId: null
+    }
+    // ensure username and password are not blank before searching
+    if(credentials.username && credentials.password){
+      db.Users.findOne({
+        where: {username:credentials.username}
+      }).then(dbResult=>{
+      // if username exists
       if(dbResult != null){
           response.usernameFound = true;
           //if passwords match
-          if(dbResult.password == req.body.password){
+          if(dbResult.password == credentials.password){
               response.passwordMatch = true;
+              response.userId = dbResult.id;
           }
       }
-      res.json(response);
+      run(response)
+    });
+  }
+};
+
+module.exports = function (app) {
+
+  app.post("/api/signUp",(req, res)=>{
+    findUser(req.body,(searchResults)=>{
+      // if username NOT taken
+      if (!searchResults.usernameFound){
+        // create new user
+        db.Users.create(req.body).then(()=>{
+          // login using newly created user
+          res.json(searchResults);
+          // res.redirect("/api/login",req.body);
+        })
+      }else{
+        //USER ALREADY EXISTS
+        res.json(searchResults)
+      }
     });
   });
+
+  app.post("/api/login",(req,res)=>{
+    const searchResults = findUser();
+    // if username was found
+    if(searchResults.usernameFound){
+      // if password matches the usernames password
+      if(searchResults.passwordMatch){
+        // credentials check out, log in this user
+        res.render("createhero");
+      }
+    }
+    res.json(searchResults);
+  });
+
 
 };
