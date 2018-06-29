@@ -10,8 +10,8 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
     heroCount:{
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
     }
   }, { fields: [ 'userName', 'password', 'heroCount' ] });
   return User;

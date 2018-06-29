@@ -29,43 +29,103 @@ const db = require("../models");
   }
 };
 
-const precessHero = function(hero){
-    console.log("CHECKING HERO:");
-    console.log(hero);
-    let statSum = 0;
-    hero.defense = hero.defense.trim();
-    hero.attack = hero.attack.trim();
-    hero.health = hero.health.trim();
-    // make sure values are in attr
-    if (hero.defense || hero.attack || hero.helath){
-      if (!isNaN(hero.defense) || !isNaN(hero.attack) || !isNaN(hero.health)){
-        
-      }
+const processHero = function(hero){
+    let result = {
+      isValid: false,
+      parsedHero:{}
+    };
 
+    // make sure that owner and name are int & not-empty
+    if(!isNaN(hero.owner) && hero.name.trim()){
+      result.parsedHero.owner = parseInt(hero.owner);
+      result.parsedHero.name = hero.name.trim();
+    }else{
       return result;
     }
 
-
-    // // make sure that def att, hlth are integers if not, return false
-    // const statNames= ["defense","attack","health"];
-    // for (var stat=0; stat<statNames.length; stat++){
-    //   if (!Number.isInteger(hero[statNames[stat]])){
-    //     console.log("----- an att is not an int");
-    //     console.log(stat + " = " + hero[statNames[stat]] + " : " + typeof(hero[statNames[stat]]));
-    //     return false;
-    //   }else{
-    //     statSum += hero[statNames[stat]];
-    //   }
-    // }
-    // ensure that id is an int and name is not blank
-    if(!Number.isInteger(hero.id) && hero.name.trim()){
-      return false;
+    // make sure that def att, hlth are integers if not, return false
+    let statSum = 0;
+    const statNames= ["defense","attack","health"];
+    for (var stat=0; stat<statNames.length; stat++){
+      let userInput = hero[statNames[stat]];
+      if(!isNaN(userInput)){
+        userInput = parseInt(userInput);
+        result.parsedHero[statNames[stat]] = userInput;
+        statSum += userInput;
+      }else{
+        return result;
+      }
     }
-    // make sure that stats are within our range
-    return (statSum == 20) //<------------------------ SKILL POINTS MAX SET HERE
+
+    console.log("statSum=" + statSum);
+
+    result.isValid = (statSum == 80)//<------------------------ SKILL POINTS MAX SET HERE
+
+    return result;
+
   };
 
 module.exports = function (app) {
+
+  app.post("/api/newHero",(req,res)=>{
+    let result = {
+      validRequest: false,
+      userId: null,
+      userHeroCount: {
+        prev:null,
+        current:null,
+      },
+      url: null
+    }
+    const heroData = processHero(req.body)
+    console.log(heroData);
+    if(heroData.isValid){
+      // if new hero req inputs are valid
+      result.validRequest = true;
+      db.User.findOne({
+        where:{ id: heroData.parsedHero.owner}
+      }).then((user)=>{
+        if(user != null){
+          result.userId = user.id;
+          result.userHeroCount.prev = user.heroCount;
+          result.userHeroCount.current = user.heroCount;
+          // if user is found
+          if(user.heroCount < 5){//<--------------- Hero MAX SET HERE
+            // if user has space for a hero, create it
+            db.Hero.create(heroData.parsedHero).then(()=>{
+              result.userHeroCount.current++;
+              // update heroCount for that user
+              db.User.update({
+                heroCount: result.userHeroCount.current
+              },{
+                where:{
+                  id: heroData.parsedHero.owner
+                }
+              }).then(()=>{
+                // character created and database updated
+                res.url = "/game"; //<------------------------------redirect to next PAGE
+                console.log("2222");
+                res.json(result);
+              })              
+            });
+          }else{
+            // User already has max num of characters
+            console.log("1111");
+            res.json(result)
+          }
+        }else{
+          console.log("0000");
+          // No User with that ID
+          res.json(result);
+        }
+      });  
+    }else{
+      // validRequest = false
+      console.log("--------")
+      res.json(result);
+    }
+  });
+
 
   app.post("/api/signUp",(req, res)=>{
     findUser(req.body,(searchResults)=>{
@@ -103,56 +163,5 @@ module.exports = function (app) {
   });
 
   //req = {fields: [ 'name', 'defense', 'attack', 'health', "owner"]}
-  app.post("/api/newHero",(req,res)=>{
-    let result = {
-      validRequest: false,
-      userId: null,
-      userHeroCount: {
-        prev:null,
-        current:null,
-      },
-      url: null
-    }
-    if(heroIsValid(req.body)){
-      // if new hero req inputs are valid
-      db.User.findOne({
-        where:{ id: req.body.owner}
-      }).then((user)=>{
-        if(user != null){
-          result.userId = user.id;
-          result.userHeroCount.prev = user.heroCount;
-          result.userHeroCount.current = user.heroCount;
-          // if user is found
-          if(user.heroCount < 5){//<--------------- Hero MAX SET HERE
-            // if user has space for a hero, create it
-            db.Hero.create(req.body).then(()=>{
-              result.heroCount.current++;
-              // update heroCount for that user
-              db.User.update({
-                heroCount: user.heroCount++
-              },{
-                where:{
-                  id:req.body.owner
-                }
-              }).then(()=>{
-                // character created and database updated
-                res.url = "/game"; //<------------------------------redirect to next PAGE
-                res.json(result);
-              })              
-            });
-          }else{
-            // User already has max num of characters
-            res.json(result)
-          }
-        }else{
-          // No User with that ID
-          res.json(result);
-        }
-      });  
-    }else{
-      // validRequest = false
-      res.json(result);
-    }
-  });
 
 };

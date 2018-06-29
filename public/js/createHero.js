@@ -24,17 +24,17 @@ $(".skills button").on("click", function (event) {
 
 $("#submitBtn").on("click", function (event) {
     event.preventDefault();
-    let newChar = {
-        "name": $("#name").val().trim(),
-        "attack": parseInt($("#Attack").attr("value")),
-        "defense": parseInt($("#Defense").attr("value")),
-        "health": parseInt($("#Health").attr("value")),
-        "owner" : 1 // <-------------------------------- STATIC USER FOR DEV
-    }
+    let newHero = {
+        name: $("#name").val().trim(),
+        attack: parseInt($("#Attack").attr("value")),
+        defense: parseInt($("#Defense").attr("value")),
+        health: parseInt($("#Health").attr("value")),
+        owner : 1 // <-------------------------------- STATIC USER FOR DEV
+    };
 
-    console.log(newChar);
+    console.log(newHero);
 
-    $.post("/api/newHero",newChar).then(res=>{
+    $.post("/api/newHero",newHero).then(res=>{
         console.log(res);
         if (res.validRequest){
             if(res.userId){

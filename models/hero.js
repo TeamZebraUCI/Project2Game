@@ -19,11 +19,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     wins: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      defaultValue: 0,
     },
     loses: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      defaultValue: 0,
     },
     owner:{
       type: DataTypes.INTEGER,
