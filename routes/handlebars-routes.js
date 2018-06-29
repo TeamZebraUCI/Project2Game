@@ -23,6 +23,7 @@ module.exports = function(app) {
   });
   
   app.get("/game", function(req, res) {
+    
     db.Character.findAll({}).then(function(results) {
     res.render('game', { title: 'Combat', characters: results});
     });

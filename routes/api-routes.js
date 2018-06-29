@@ -39,7 +39,7 @@ const precessHero = function(hero){
     // make sure values are in attr
     if (hero.defense || hero.attack || hero.helath){
       if (!isNaN(hero.defense) || !isNaN(hero.attack) || !isNaN(hero.health)){
-
+        
       }
 
       return result;
