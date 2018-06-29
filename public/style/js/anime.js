@@ -1,3 +1,8 @@
+//Sword Attack Animation
+anime({
+    targets:'img.sword',
+    rotate: -90
+})
 const swordAttack = anime({
     targets: 'img.sword',
     translateY: [
@@ -14,10 +19,8 @@ const swordAttack = anime({
     },
     autoplay: false
 });
-anime({
-    targets:'img.sword',
-    rotate: -90
-})
+
+// On click ATTACK event
 $("#attackBtn").on("click", event => {
     swordAttack.restart();
 });

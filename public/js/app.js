@@ -18,7 +18,7 @@ $(document).ready(function () {
         name: userData.name,
         password: userData.password
       }).then(() => {
-        location.reload();
+         res.redirect("/newhero");
       });
       userInput.val("");
       passwordInput.val("");
@@ -32,18 +32,6 @@ $(document).ready(function () {
       userInput.val("");
       passwordInput.val("");
     }
-    // Does a post to the signup route. If successful, we are redirected to the members page
-    // Otherwise we log any errors
-
-
-
-
-
-
-    function signUpUser(name, password) {
-      
-    }
-
 
   });
 });

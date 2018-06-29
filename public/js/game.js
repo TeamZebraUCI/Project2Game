@@ -138,6 +138,8 @@ $(document).ready(function () {
             // update combat text to display result of game
             $("#combatText").text("Victory! You've slain the dragon!");
         }
+        //Added jQuery shake animation to combat text
+        $( "#combatText" ).effect( "shake" );
     });
 
 
