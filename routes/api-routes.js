@@ -7,7 +7,8 @@ const db = require("../models");
     let response = {
       usernameFound: false,
       passwordMatch: false,
-      userId: null
+      userId: null,
+      url: null
     }
     // ensure username and password are not blank before searching
     if(credentials.username && credentials.password){
@@ -35,31 +36,33 @@ module.exports = function (app) {
       // if username NOT taken
       if (!searchResults.usernameFound){
         // create new user
+        console.log("----CREATING USER");
         db.Users.create(req.body).then((dbResult)=>{
           // return search results with user new id in response
           searchResults.userId=dbResult.id;
-          // res.json(searchResults);
-          // res.redirect("/api/login",req.body);
+          searchResults.url = "/newhero";
         })
       }else{
+        console.log("----ALREADY EXISTS");
         //USER ALREADY EXISTS
-        res.json(searchResults)
+        searchResults.passwordMatch = false;
+        searchResults.userId = null;
       }
+      res.json(searchResults)
     });
   });
 
   app.post("/api/login",(req,res)=>{
     findUser(req.body,(searchResults)=>{
+      console.log(searchResults);
       if(searchResults.usernameFound){
         // if password matches the usernames password
         if(searchResults.passwordMatch){
           // credentials check out, log in this user
-          res.redirect("/newhero");
-          // res.redirect("newhero")
+          searchResults.url = "/newhero";
         }
-      }else{
-        res.json(searchResults);
       }
+      res.json(searchResults);
     });
   });
 

@@ -10,10 +10,13 @@ $(document).ready(() => {
     if ($('#isNewUser').prop('checked')){
       // user wants to create a new account
       $.post("/api/signUp",userCredentials).then((res)=>{
-        if(res.userId != null){
+        console.log(res);
+        if(!res.usernameFound){
+          $("#msg").text("User Created");
+          $("#msg").text("Loging in");
           // user was successfully created
           // $.get("/newhero");
-        }else if(res.usernameFound){
+        }else{
           $("#msg").text("Sorry Username already taken, Try a different one");
         }
       });
@@ -23,8 +26,7 @@ $(document).ready(() => {
         console.log(res);
         if(res.usernameFound && res.passwordMatch){
           $("#msg").text("Loging in");
-          // $.get("/newhero");
-          // window.location.href = "newhero";
+          window.location.href = res.url;
         }
         else if(res.usernameFound && !res.passwordMatch){
           $("#msg").text("incorrect Password try again");
