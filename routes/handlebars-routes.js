@@ -22,6 +22,11 @@ module.exports = function(app) {
     res.render('createhero', { title: 'Create Hero!', users: results});
     });
   });
+  app.get("/selecthero", function(req, res) {
+    db.Character.findAll({}).then(function(results) {
+    res.render('selecthero', { title: 'Select your Hero!', characters: results});
+    });
+  });
   app.get("/game", function(req, res) {
     db.Character.findAll({}).then(function(results) {
     res.render('game', { title: 'Combat', characters: results});

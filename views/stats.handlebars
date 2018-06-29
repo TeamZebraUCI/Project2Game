@@ -12,14 +12,14 @@
     </thead>
 
     <tbody>
+        {{#each characters}}
         <tr>
-            {{#each characters}}
-            <th>{{name}}</th>
-            <th>{{attack}}</th>
-            <th>{{defense}}</th>
-            <th>{{health}}</th>
-            {{/each}}
+            <td>{{name}}</td>
+            <td>{{attack}}</td>
+            <td>{{defense}}</td>
+            <td>{{health}}</td>
         </tr>
+        {{/each}}
         <tr>
             <td>Alvin</td>
             <td>Eclair</td>
