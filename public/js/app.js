@@ -1,37 +1,39 @@
-$(document).ready(function () {
-  // Getting references to our form and input
-  const userInput = $("input#user-input");
-  const passwordInput = $("input#password-input");
+const nextPage = function(){};
 
-  // When the signup button is clicked, we validate the email and password are not blank
-  $("#signup").on("click", function (event) {
-    const userData = {
-      name: userInput.val().trim(),
-      password: passwordInput.val().trim()
+$(document).ready(() => {
+  $("#submit").on("click", function (event) {
+    // grab users input
+    const userCredentials = {
+      username: $("input#user-input").val().trim(),
+      password: $("input#password-input").val()
     };
-    console.log(userData);
-    if (!userData.name || !userData.password) {
-      return;
-    }
-    if ($('#isNewUser').prop('checked')) {
-      $.post("/api/signup", {
-        name: userData.name,
-        password: userData.password
-      }).then(() => {
-         window.location.href = "/newhero"
+    if ($('#isNewUser').prop('checked')){
+      // user wants to create a new account
+      $.post("/api/signUp",userCredentials).then((res)=>{
+        console.log(res);
+        if(!res.usernameFound){
+          $("#msg").text("User Created");
+          $("#msg").text("Loging in");
+          window.location.href = res.url;// <--------------------------------------------go to next page
+        }else{
+          $("#msg").text("Sorry Username already taken, Try a different one");
+        }
       });
-      userInput.val("");
-      passwordInput.val("");
-    } else {
-      $.post("/api/login", {
-        name: userData.name,
-        password: userData.password
-      }).then(() => {
-        window.location.href = "/newhero"
+    }else{
+      // user wants to login to existing account
+      $.post("/api/login",userCredentials).then((res)=>{
+        console.log(res);
+        if(res.usernameFound && res.passwordMatch){
+          $("#msg").text("Loging in");
+          window.location.href = res.url;// <--------------------------------------------go to next page
+        }
+        else if(res.usernameFound && !res.passwordMatch){
+          $("#msg").text("incorrect Password try again");
+        }else if(!res.usernameFound){
+          $("#msg").text("No account with that username");
+        }
       });
-      userInput.val("");
-      passwordInput.val("");
     }
-
   });
 });
+

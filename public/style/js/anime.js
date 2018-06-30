@@ -1,12 +1,13 @@
 //Sword Attack Animation
 anime({
     targets:'img.sword',
-    rotate: -90
+    rotate: -0
 })
 const swordAttack = anime({
     targets: 'img.sword',
     translateY: [
-        { value: -20, duration: 500 },
+        { value: -20, duration: 50 },
+        { value: -300, duration: 800 },
         { value: 0, duration: 500 }
     ],
     translateX: [
@@ -14,7 +15,7 @@ const swordAttack = anime({
         { value: 0, duration: 500 }
     ],
     rotate: {
-        value: -450,
+        value: -750,
         easing: 'easeInOutSine'
     },
     autoplay: false
