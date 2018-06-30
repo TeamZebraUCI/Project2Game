@@ -41,7 +41,8 @@ $("#submitBtn").on("click", function (event) {
                 if (Number.isInteger(res.userHeroCount.current)){
                     if (res.userHeroCount.prev < res.userHeroCount.current){
                         console.log("Character created!");
-                        window.location.href = res.url;
+                        
+                        // window.location.href = res.url;
                     }
                     else if (res.userHeroCount.prev == res.userHeroCount.current){
                         console.log(" character NOT created");

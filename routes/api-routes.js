@@ -78,7 +78,6 @@ module.exports = function (app) {
       url: null
     }
     const heroData = processHero(req.body)
-    console.log(heroData);
     if(heroData.isValid){
       // if new hero req inputs are valid
       result.validRequest = true;
@@ -86,15 +85,16 @@ module.exports = function (app) {
         where:{ id: heroData.parsedHero.owner}
       }).then((user)=>{
         if(user != null){
+          console.log("======USER FOUND");
+          console.log(user);
           result.userId = user.id;
           result.userHeroCount.prev = user.heroCount;
           result.userHeroCount.current = user.heroCount;
           // if user is found
           if(user.heroCount < 5){//<--------------- Hero MAX SET HERE
             // if user has space for a hero, create it
+            result.userHeroCount.current++;
             db.Hero.create(heroData.parsedHero).then(()=>{
-              result.userHeroCount.current++;
-              // update heroCount for that user
               db.User.update({
                 heroCount: result.userHeroCount.current
               },{
@@ -106,7 +106,7 @@ module.exports = function (app) {
                 res.url = "/game"; //<------------------------------redirect to next PAGE
                 console.log("2222");
                 res.json(result);
-              })              
+              });
             });
           }else{
             // User already has max num of characters
@@ -118,7 +118,7 @@ module.exports = function (app) {
           // No User with that ID
           res.json(result);
         }
-      });  
+      });
     }else{
       // validRequest = false
       console.log("--------")
