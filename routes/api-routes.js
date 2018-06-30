@@ -156,4 +156,5 @@ module.exports = function (app) {
       res.json(searchResults);
     });
   });
+
 };
