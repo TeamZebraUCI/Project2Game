@@ -9,10 +9,7 @@ $(document).ready(() => {
     };
     if ($('#isNewUser').prop('checked')) {
       // user wants to create a new account
-      $.post("/api/signUp", {
-        name: userCredentials.username,
-        password: userCredentials.password
-      }).then((res) => {
+      $.post("/api/signUp",userCredentials).then( res => {
         console.log(res);
         if (!res.usernameFound) {
           $("#msg").text("User Created");
