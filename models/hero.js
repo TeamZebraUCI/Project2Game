@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  const Character = sequelize.define('Character', {
+  const Hero = sequelize.define('Hero', {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,13 +18,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     wins: {
       type: DataTypes.INTEGER,
+<<<<<<< HEAD:models/characters.js
       allowNull: true,
+=======
+>>>>>>> master:models/hero.js
       defaultValue: 0,
     },
     loses: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      defaultValue: 0,
+    },
+    owner:{
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
+<<<<<<< HEAD:models/characters.js
   }, { fields: [ 'name', 'defense', 'attack', 'health' ] });
   return Character;
   //Code for foreign key
@@ -33,6 +41,10 @@ module.exports = function(sequelize, DataTypes) {
     Character.belongsTo(User);
   };
   
+=======
+  }, { fields: [ 'name', 'defense', 'attack', 'health', "owner"] });
+  return Hero;
+>>>>>>> master:models/hero.js
 };
 
 

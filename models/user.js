@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const User = sequelize.define('User', {
-    userName: {
+    username: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
@@ -9,13 +9,15 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  }, { fields: [ 'userName', 'password' ] });
-  
+    heroCount:{
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    }
+  }, { fields: [ 'userName', 'password', 'heroCount' ] });
   User.associate = function(models) {
     User.hasMany(models.Character, {
       onDelete: "cascade"
     });
   };
-
   return User;
 };
