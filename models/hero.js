@@ -2,7 +2,6 @@ module.exports = function(sequelize, DataTypes) {
   const Hero = sequelize.define('Hero', {
     name: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     defense: {

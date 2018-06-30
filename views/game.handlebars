@@ -1,7 +1,8 @@
 <div class="background gamebg"></div>
+<a href="/stats"><button class='hero-select btn btn-large waves-effect waves-light grey darken-3 white-text fxn'>Hero Stats</button></a>
 <h3>BOSS: Fire Dragon</h3>
-  {{#each characters}}
-  <h4>Your Stats</h4>
+  {{#each heros}}
+  <h4>{{name}}</h4>
   <p class="stats">Attack: <span>{{attack}}</span></p>
   <p class="stats">Defense: <span>{{defense}}</span></p>
   <p class="stats">Health: <span>{{health}}</span></p>

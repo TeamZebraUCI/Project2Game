@@ -1,0 +1,33 @@
+<div class='background statsbg'></div>
+<a href="/newhero"><button class='hero-select btn btn-large waves-effect waves-light grey darken-3 white-text fxn'>Create New Hero</button></a>
+<h2>Choose your Hero!</h2>
+<table class="striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Attack</th>
+            <th>Defence</th>
+            <th>Wins</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each heros}}
+        <tr>            
+            <td class='center'>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{attack}}</td>
+            <td>{{defense}}</td>
+            <td>{{health}}</td>
+            <td>{{wins}}</td>
+            <td><a href="/game/{{id}}"><button class='hero-select btn btn-large waves-effect waves-light grey darken-3 white-text right' value="{{id}}">Select Hero</button></a></td>            
+        </tr>
+        {{/each}}
+        
+    </tbody>
+
+    <!-- Custom Script -->
+<script src="/js/heroselect.js" type="text/javascript"></script>
