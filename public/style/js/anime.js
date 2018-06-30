@@ -1,8 +1,4 @@
 //Sword Attack Animation
-anime({
-    targets:'img.sword',
-    rotate: -0
-})
 const swordAttack = anime({
     targets: 'img.sword',
     translateY: [
