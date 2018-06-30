@@ -1,5 +1,3 @@
-const nextPage = function () { };
-
 $(document).ready(() => {
   $("#submit").on("click", function (event) {
     // grab users input

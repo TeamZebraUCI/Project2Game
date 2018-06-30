@@ -1,12 +1,11 @@
-/* Add custom font here */
-/* @font-face {
-    font-family: ??????;
-    src: url();
-} */
 *{
   margin:0;
   padding:0;
   color: white;
+  text-shadow: -1px -1px 1px #aaa,
+             0px 4px 1px rgba(0,0,0,0.5),
+             4px 4px 5px rgba(0,0,0,0.7),
+             0px 0px 7px rgba(0,0,0,0.4);
   font-family: ESO;
 }
 @font-face {
