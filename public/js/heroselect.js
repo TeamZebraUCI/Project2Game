@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $(".hero-select").click(function () {
         let userPick = $(this).val();
-        $.post("/game/:id", {
-        id: userPick,
+
+        $.get("/game/" + userPick, function(data){
     }).then(() => {
-        window.location.href = "/game/:id"
+        window.location.href = "/game/" + userPick
     });
 
     });

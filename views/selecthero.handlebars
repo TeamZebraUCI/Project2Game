@@ -15,7 +15,7 @@
     </thead>
 
     <tbody>
-        {{#each characters}}
+        {{#list characters}}
         <tr>            
             <td class='center'>{{id}}</td>
             <td>{{name}}</td>
@@ -25,7 +25,7 @@
             <td>{{wins}}</td>
             <td><button class='hero-select btn btn-large waves-effect waves-light grey darken-3 white-text right' value="{{id}}">Select Hero</button></th>            
         </tr>
-        {{/each}}
+        {{/list}}
         
     </tbody>
 

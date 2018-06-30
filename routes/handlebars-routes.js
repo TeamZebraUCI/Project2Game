@@ -26,11 +26,24 @@ module.exports = function(app) {
     });
   });
   app.get("/game/:id", function(req, res) {
-    console.log(req.params);
-    db.Character.findById(req.params.id).then(function(results) {
+    db.Character.findAll({ where: { id: req.params.id}}).then(results => {
+
     res.render('game', { title: 'Combat', characters: results});
     });
+
   });
+
+
+
+
+
+
+
+
+
+
+
+
   app.get("/stats", function(req, res) {
     db.Character.findAll({}).then(function(results) {
     res.render('stats', { title: 'Player Stats!', characters: results});
