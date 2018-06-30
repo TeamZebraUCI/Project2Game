@@ -10,7 +10,10 @@
 
 
 ### Images
-![SignUp](https://i.imgur.com/ZAWTTkc.jpg)
+![SignUp](https://i.imgur.com/6lAIQks.jpg)
+![Select](https://i.imgur.com/J1LRfMA.jpg)
+![NewHero](https://i.imgur.com/NnPMH10.jpg)
+![Combat](https://i.imgur.com/uVtkobE.jpg)
 
 ## Our Characters! 
 
@@ -46,5 +49,5 @@ You were once the chosen of God. A templar you swore, sinew and soul, to serve G
 
 # Credits
 
-[ANIME.JS](http://animejs.com/)
-[Materialize](https://materializecss.com/)
+* [ANIME.JS](http://animejs.com/)
+* [Materialize](https://materializecss.com/)
