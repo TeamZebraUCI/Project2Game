@@ -113,3 +113,9 @@ td{
     top: 0;
     left: 0;
 }
+
+.fsn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
