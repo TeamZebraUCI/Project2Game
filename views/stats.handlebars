@@ -8,16 +8,21 @@
             <th>Health</th>
             <th>Attack</th>
             <th>Defence</th>
+            <th>Wins</th>
+            <th>Loses</th>
         </tr>
     </thead>
 
     <tbody>
-        {{#each characters}}
+        {{#each heros}}
         <tr>
             <td>{{name}}</td>
             <td>{{attack}}</td>
             <td>{{defense}}</td>
             <td>{{health}}</td>
+            <td>{{wins}}</td>
+            <td>{{loses}}</td>
+
         </tr>
         {{/each}}
     </tbody>

@@ -99,7 +99,7 @@ module.exports = function (app) {
                 }
               }).then(()=>{
                 // character created and database updated
-                result.url = "game"; //<------------------------------redirect to next PAGE
+                result.url = "selecthero"; //<------------------------------redirect to next PAGE
                 console.log("+");
                 res.json(result);
               });
@@ -149,7 +149,7 @@ module.exports = function (app) {
         // if password matches the usernames password
         if(searchResults.passwordMatch){
           // credentials check out, log in this user
-          searchResults.url = "newhero";//<------------------------------redirect to next PAGE
+          searchResults.url = "selecthero";//<------------------------------redirect to next PAGE
           res.json(searchResults);
         }
       }
