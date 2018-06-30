@@ -21,11 +21,13 @@ module.exports = function(app) {
   app.get("/newhero", function(req, res) {
     res.render('createhero', { title: 'Create Hero!'});
   });
+  
   app.get("/selecthero", function(req, res) {
     db.Character.findAll({}).then(function(results) {
     res.render('selecthero', { title: 'Select your Hero!', characters: results});
     });
   });
+
   app.get("/game/:id", function(req, res) {
     db.Character.findAll({ where: { id: req.params.id}}).then(results => {
     res.render('game', { title: 'Combat', characters: results});
