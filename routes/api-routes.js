@@ -156,24 +156,4 @@ module.exports = function (app) {
       res.json(searchResults);
     });
   });
-
-<<<<<<< HEAD
-  app.post("/api/create", function (req, res) {
-    console.log(req.body);
-    db.Character.create({
-      name: req.body.name,
-      attack: req.body.attack,
-      defense: req.body.defense,
-      health: req.body.health
-    }).then(() => {
-      window.location.href = "/game"
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
-  });
-}; //export end
-=======
 };
->>>>>>> master

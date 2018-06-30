@@ -18,10 +18,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     wins: {
       type: DataTypes.INTEGER,
-<<<<<<< HEAD:models/characters.js
-      allowNull: true,
-=======
->>>>>>> master:models/hero.js
       defaultValue: 0,
     },
     loses: {
@@ -32,19 +28,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-<<<<<<< HEAD:models/characters.js
-  }, { fields: [ 'name', 'defense', 'attack', 'health' ] });
-  return Character;
-  //Code for foreign key
-  Character.associate = function(models) {
-   //Associating Characters with Users
-    Character.belongsTo(User);
-  };
-  
-=======
   }, { fields: [ 'name', 'defense', 'attack', 'health', "owner"] });
   return Hero;
->>>>>>> master:models/hero.js
 };
 
 
