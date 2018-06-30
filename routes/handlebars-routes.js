@@ -28,10 +28,8 @@ module.exports = function(app) {
   });
   app.get("/game/:id", function(req, res) {
     db.Character.findAll({ where: { id: req.params.id}}).then(results => {
-
     res.render('game', { title: 'Combat', characters: results});
     });
-
   });
 
 
