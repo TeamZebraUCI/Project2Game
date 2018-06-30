@@ -51,3 +51,4 @@ You were once the chosen of God. A templar you swore, sinew and soul, to serve G
 
 * [ANIME.JS](http://animejs.com/)
 * [Materialize](https://materializecss.com/)
+* [Pixel Sagas](http://www.pixelsagas.com)
