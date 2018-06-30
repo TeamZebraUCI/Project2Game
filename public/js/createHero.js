@@ -24,28 +24,6 @@ $(".skills button").on("click", function (event) {
 
 $("#submitBtn").on("click", function (event) {
     event.preventDefault();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    let newChar = {
-        "name": $("#name").val().trim(),
-        "attack": parseInt($("#Attack").attr("value")),
-        "defense": parseInt($("#Defense").attr("value")),
-        "health": parseInt($("#Health").attr("value"))
-    }
-    console.log(newChar);
-    createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
-});
-function createChar(name, attack, defense, health) {
-    $.post("/api/create", {
-        name: name,
-        attack: attack,
-        defense: defense,
-        health: health
-    }).then(() => {
-        window.location.href = "/selecthero"
-=======
-=======
->>>>>>> 60f9a0ce1e25545919dc9f8ec9cf5c226be4392f
     let newHero = {
         name: $("#name").val().trim(),
         attack: parseInt($("#Attack").attr("value")),
@@ -74,10 +52,6 @@ function createChar(name, attack, defense, health) {
             $("#msg").text("Make sure to use all points and give hero a name");
             console.log(" INVALID REQUEST SENT");
         }
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 60f9a0ce1e25545919dc9f8ec9cf5c226be4392f
     });
 
 });

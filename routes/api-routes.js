@@ -99,7 +99,7 @@ module.exports = function (app) {
                 }
               }).then(()=>{
                 // character created and database updated
-                result.url = "game"; //<------------------------------redirect to next PAGE
+                result.url = "selecthero"; //<------------------------------redirect to next PAGE
                 console.log("+");
                 res.json(result);
               });
