@@ -28,11 +28,10 @@ module.exports = function(sequelize, DataTypes) {
   }, { fields: [ 'name', 'defense', 'attack', 'health' ] });
   return Character;
   //Code for foreign key
-  
-  // Character.associate = function(models) {
-   // Associating Characters with Users
-  //   Character.belongsTo(User, {foreignKey: 'id', targetKey: 'owner'});
-  // };
+  Character.associate = function(models) {
+   //Associating Characters with Users
+    Character.belongsTo(User);
+  };
   
 };
 
