@@ -108,4 +108,8 @@ td{
     font-style: italic;
     font-size: 18px;
 }
-
+.fxn{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
