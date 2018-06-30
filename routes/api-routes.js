@@ -57,8 +57,6 @@ const processHero = function(hero){
       }
     }
 
-    console.log("statSum=" + statSum);
-
     result.isValid = (statSum == 80)//<------------------------ SKILL POINTS MAX SET HERE
 
     return result;
@@ -85,13 +83,11 @@ module.exports = function (app) {
         where:{ id: heroData.parsedHero.owner}
       }).then((user)=>{
         if(user != null){
-          console.log("======USER FOUND");
-          console.log(user);
           result.userId = user.id;
           result.userHeroCount.prev = user.heroCount;
           result.userHeroCount.current = user.heroCount;
           // if user is found
-          if(user.heroCount < 5){//<--------------- Hero MAX SET HERE
+          if(user.heroCount < 5){//<--------------------------------- Hero MAX SET HERE
             // if user has space for a hero, create it
             result.userHeroCount.current++;
             db.Hero.create(heroData.parsedHero).then(()=>{
@@ -103,25 +99,25 @@ module.exports = function (app) {
                 }
               }).then(()=>{
                 // character created and database updated
-                res.url = "/game"; //<------------------------------redirect to next PAGE
-                console.log("2222");
+                result.url = "game"; //<------------------------------redirect to next PAGE
+                console.log("+");
                 res.json(result);
               });
             });
           }else{
             // User already has max num of characters
-            console.log("1111");
+            console.log("++");
             res.json(result)
           }
         }else{
-          console.log("0000");
           // No User with that ID
+          console.log("+++");
           res.json(result);
         }
       });
     }else{
       // validRequest = false
-      console.log("--------")
+      console.log("++++");
       res.json(result);
     }
   });
@@ -132,36 +128,33 @@ module.exports = function (app) {
       // if username NOT taken
       if (!searchResults.usernameFound){
         // create new user
-        console.log("----CREATING USER");
         db.User.create(req.body).then((dbResult)=>{
           // return search results with user new id in response
           searchResults.userId=dbResult.id;
-          searchResults.url = "/newhero";
+          searchResults.url = "newhero";//<------------------------------redirect to next PAGE
+          res.json(searchResults);
         })
       }else{
-        console.log("----ALREADY EXISTS");
         //USER ALREADY EXISTS
         searchResults.passwordMatch = false;
         searchResults.userId = null;
+        res.json(searchResults)
       }
-      res.json(searchResults)
     });
   });
 
   app.post("/api/login",(req,res)=>{
     findUser(req.body,(searchResults)=>{
-      console.log(searchResults);
       if(searchResults.usernameFound){
         // if password matches the usernames password
         if(searchResults.passwordMatch){
           // credentials check out, log in this user
-          searchResults.url = "/newhero/" + userid;
+          searchResults.url = "newhero";//<------------------------------redirect to next PAGE
+          res.json(searchResults);
         }
       }
       res.json(searchResults);
     });
   });
-
-  //req = {fields: [ 'name', 'defense', 'attack', 'health', "owner"]}
 
 };
