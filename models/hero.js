@@ -1,8 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
-  const Character = sequelize.define('Character', {
+  const Hero = sequelize.define('Hero', {
     name: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     defense: {
@@ -19,21 +18,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     wins: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      defaultValue: 0,
     },
     loses: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      defaultValue: 0,
+    },
+    owner:{
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
-  }, { fields: [ 'name', 'defense', 'attack', 'health' ] });
-  //Code for foreign key
-  // Characters.associate = function(models) {
-  //   // Associating Characters with Users
-  //   Character.hasMany(models.User, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-  return Character;
+  }, { fields: [ 'name', 'defense', 'attack', 'health', "owner"] });
+  return Hero;
 };
 
 

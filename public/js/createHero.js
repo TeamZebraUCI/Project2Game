@@ -24,22 +24,34 @@ $(".skills button").on("click", function (event) {
 
 $("#submitBtn").on("click", function (event) {
     event.preventDefault();
-    let newChar = {
-        "name": $("#name").val().trim(),
-        "attack": parseInt($("#Attack").attr("value")),
-        "defense": parseInt($("#Defense").attr("value")),
-        "health": parseInt($("#Health").attr("value"))
-    }
-    console.log(newChar);
-    createChar(newChar.name, newChar.attack, newChar.defense, newChar.health);
-});
-function createChar(name, attack, defense, health) {
-    $.post("/api/create", {
-        name: name,
-        attack: attack,
-        defense: defense,
-        health: health
-    }).then(() => {
-        window.location.href = "/game"
+    let newHero = {
+        name: $("#name").val().trim(),
+        attack: parseInt($("#Attack").attr("value")),
+        defense: parseInt($("#Defense").attr("value")),
+        health: parseInt($("#Health").attr("value")),
+        owner : 1 // <-------------------------------- STATIC USER FOR DEV
+    };
+    $.post("/api/newHero",newHero).then(res=>{
+        console.log(res);
+        if (res.validRequest){
+            if(res.userId){
+                if (Number.isInteger(res.userHeroCount.current)){
+                    if (res.userHeroCount.prev < res.userHeroCount.current){
+                        window.location.href = res.url; // <----------------------------------------------redirect when successfull character created
+                    }
+                    else if (res.userHeroCount.prev == res.userHeroCount.current){
+                        $("#msg").text("Already made 5 heros");
+                        console.log(" character NOT created (already have max hero's or other error");
+                        // SHOULD HAVE BUTTON TO REDIRECT TO CHARACTER SELECT ---------------------------- NEED ANOTHER BUTTON 
+                    }
+                }
+            }else{
+                console.log(" INVALID USER ID");
+            }
+        }else{
+            $("#msg").text("Make sure to use all points and give hero a name");
+            console.log(" INVALID REQUEST SENT");
+        }
     });
-}
+
+});

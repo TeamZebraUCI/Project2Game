@@ -21,14 +21,19 @@ module.exports = function(app) {
   app.get("/newhero", function(req, res) {
     res.render('createhero', { title: 'Create Hero!'});
   });
-  app.get("/game", function(req, res) {
-    db.Character.findAll({}).then(function(results) {
-    res.render('game', { title: 'Combat', characters: results});
+  app.get("/selecthero", function(req, res) {
+    db.Hero.findAll({}).then(function(results) {
+    res.render('selecthero', { title: 'Select your Hero!', heros: results});
     });
   });
   app.get("/stats", function(req, res) {
-    db.Character.findAll({}).then(function(results) {
-    res.render('stats', { title: 'Player Stats!', characters: results});
+    db.Hero.findAll({}).then(function(results) {
+    res.render('stats', { title: 'Hero Stats!', heros: results});
+    });
+  });
+  app.get("/game/:id", function(req, res) {
+    db.Hero.findAll({ where: { id: req.params.id}}).then(results => {
+    res.render('game', { title: 'Combat', heros: results});
     });
   });
 }
