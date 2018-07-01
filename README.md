@@ -49,6 +49,11 @@ You were once the chosen of God. A templar you swore, sinew and soul, to serve G
 
 # Credits
 
-* [ANIME.JS](http://animejs.com/)
-* [Materialize](https://materializecss.com/)
-* [Pixel Sagas](http://www.pixelsagas.com)
+* [ANIME.JS](http://animejs.com/) - Weapon attack animation
+* [Materialize](https://materializecss.com/) - UI design and effects
+* [Pixel Sagas](http://www.pixelsagas.com) - Planeswalker font
+
+## NPM Modules
+
+* sequelize
+* express-handlebars
