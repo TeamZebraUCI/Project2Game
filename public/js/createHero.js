@@ -1,4 +1,4 @@
-let skillPonints = 20;
+let skillPoints = 20;
 $("#skillPoints").text("Skill Points: " + skillPonints);
 
 // increase decrease skill value

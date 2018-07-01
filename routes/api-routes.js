@@ -40,7 +40,7 @@ module.exports = function (app) {
         db.User.create(req.body).then((dbResult)=>{
           // return search results with user new id in response
           searchResults.userId=dbResult.id;
-          searchResults.url = "/newhero";
+          searchResults.url = "/stats";
         })
       }else{
         console.log("----ALREADY EXISTS");
@@ -59,7 +59,7 @@ module.exports = function (app) {
         // if password matches the usernames password
         if(searchResults.passwordMatch){
           // credentials check out, log in this user
-          searchResults.url = "/newhero";
+          searchResults.url = "/stats";
         }
       }
       res.json(searchResults);
