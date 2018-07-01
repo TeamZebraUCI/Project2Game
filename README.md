@@ -1,13 +1,5 @@
-
-
-
-
-
-
-
-
-
-
+*Minimum viable product achieved on 7/1/2018*
+Expect further patches to be released in the future!
 
 ### Images
 ![SignUp](https://i.imgur.com/6lAIQks.jpg)
