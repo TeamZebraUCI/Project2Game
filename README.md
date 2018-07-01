@@ -1,4 +1,5 @@
 *Minimum viable product achieved on 7/1/2018*
+
 Expect further patches to be released in the future!
 
 ### Images
@@ -44,6 +45,7 @@ You were once the chosen of God. A templar you swore, sinew and soul, to serve G
 * [ANIME.JS](http://animejs.com/) - Weapon attack animation
 * [Materialize](https://materializecss.com/) - UI design and effects
 * [Pixel Sagas](http://www.pixelsagas.com) - Planeswalker font
+* [Elder Scrolls Skyrim](https://elderscrolls.bethesda.net/en/skyrim) - Inspiration and theme of game.
 
 ## NPM Modules
 
