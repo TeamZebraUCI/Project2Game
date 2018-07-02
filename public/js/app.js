@@ -22,7 +22,7 @@ $(document).ready(() => {
       $.post("/api/login", userCredentials).then((res) => {
         console.log(res);
         if (res.usernameFound && res.passwordMatch) {
-          $("#msg").text("Loging in");
+          $("#msg").text("Logging in");
           window.location.href = res.url;// <--------------------------------------------go to next page
         }
         else if (res.usernameFound && !res.passwordMatch) {

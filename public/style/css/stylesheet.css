@@ -12,7 +12,6 @@
     font-family: ESO;
     src: url("../fonts/Planewalker.otf") format("opentype");
 }
-
 @font-face {
     font-family: ESO;
     font-weight: bold;
@@ -37,8 +36,9 @@
     transform: translateX(-50%) translateY(-50%);
     background-size: cover;
 }
-.gamebg {    
-    background: url('../images/gamebg.jpg') no-repeat;    
+.gamebg {
+    background: url('../images/gamebg.jpg') no-repeat;
+    background-size: cover;  
 }
 .statsbg {    
     background: url('../images/statsbg.jpg') no-repeat;  
@@ -112,9 +112,11 @@ td{
     top: 0;
     left: 0;
 }
-
 .fsn{
     position: fixed;
     bottom: 50%;
     left: 0;
+}
+.btn{
+    margin-left: 3px;
 }
