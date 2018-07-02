@@ -12,7 +12,6 @@
     font-family: ESO;
     src: url("../fonts/Planewalker.otf") format("opentype");
 }
-
 @font-face {
     font-family: ESO;
     font-weight: bold;
@@ -113,9 +112,11 @@ td{
     top: 0;
     left: 0;
 }
-
 .fsn{
     position: fixed;
     bottom: 50%;
     left: 0;
+}
+.btn{
+    margin-left: 3px;
 }
