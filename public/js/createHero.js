@@ -1,5 +1,5 @@
 let skillPoints = 20;
-$("#skillPoints").text("Skill Points: " + skillPonints);
+$("#skillPoints").text("Skill Points: " + skillPoints);
 
 // increase decrease skill value
 $(".skills button").on("click", function (event) {
@@ -7,17 +7,17 @@ $(".skills button").on("click", function (event) {
     let skill = $(this).attr("data-skill");
     let skillVal = parseInt($("#" + skill).attr("value"));
     if ($(this).text() == "+") {
-        if (skillPonints > 0) {
-            skillPonints--;
+        if (skillPoints > 0) {
+            skillPoints--;
             skillVal++;
         }
     } else if ($(this).text() == "-") {
         if (skillVal > 20) {
-            skillPonints++;
+            skillPoints++;
             skillVal--;
         }
     }
-    $("#skillPoints").text("Skill Points: " + skillPonints);
+    $("#skillPoints").text("Skill Points: " + skillPoints);
     $("#" + skill).attr("value", skillVal.toString());
     $("#" + skill + " .skillValStr").text(skill + " : " + skillVal.toString());
 });
