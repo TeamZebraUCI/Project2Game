@@ -1,5 +1,8 @@
+# Deployed on Heroku
+
+https://onlinerpgproj2.herokuapp.com/
+
 *Minimum viable product achieved on 7/1/2018*<br />
-https://onlinerpgproj2.herokuapp.com/<br />
 Expect further patches to be released in the future!
 
 ### Images
