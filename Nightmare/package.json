@@ -1,0 +1,23 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "Example of how to use Mocha with Nightmare.",
+  "main": "example.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "automock": false,
+    "verbose": true,
+    "collectCoverageFrom": [
+      "example.js"
+    ],
+    "collectCoverage": false
+  },
+  "devDependencies": {
+    "jest": "^23.1.0",
+    "nightmare": "^3.0.1"
+  }
+}
