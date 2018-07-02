@@ -1,6 +1,4 @@
-# Deployed on Heroku
-
-https://onlinerpgproj2.herokuapp.com/
+# [Deployed on Heroku](https://onlinerpgproj2.herokuapp.com/)
 
 *Minimum viable product achieved on 7/1/2018*<br />
 Expect further patches to be released in the future!
@@ -53,5 +51,9 @@ Why do soldiers bother with target practice? One learns best by hitting real peo
 
 ## NPM Modules
 
-* sequelize
-* express-handlebars
+* [Sequelize](https://www.npmjs.com/package/sequelize)
+* [mySQL2](https://www.npmjs.com/package/mysql2)
+* [Express](https://www.npmjs.com/package/express)
+* [Express-Eandlebars](https://www.npmjs.com/package/express-handlebars)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* [Body-Parser](https://www.npmjs.com/package/body-parser)
