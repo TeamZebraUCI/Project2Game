@@ -104,7 +104,7 @@ $(document).ready(function () {
                 if (playerDefense >= 1) {
                     // Subtract the damage amount from the player's health.
                     playerHealth -= dragonAttack;
-                    $("#combatText").text("Agh! The dragon slashed you for " + dragonDamage + " damage! Your armor blocked " + playerDefense + " damage!");
+                    $("#combatText").text(`Agh! The dragon slashed you for ${dragonDamage} damage! Your armor blocked ${playerDefense} damage!`);
 
                     // wear down armor durability
                     playerDefense--;
