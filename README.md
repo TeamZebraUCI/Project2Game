@@ -54,6 +54,6 @@ Why do soldiers bother with target practice? One learns best by hitting real peo
 * [Sequelize](https://www.npmjs.com/package/sequelize)
 * [mySQL2](https://www.npmjs.com/package/mysql2)
 * [Express](https://www.npmjs.com/package/express)
-* [Express-Eandlebars](https://www.npmjs.com/package/express-handlebars)
+* [Express-Handlebars](https://www.npmjs.com/package/express-handlebars)
 * [Dotenv](https://www.npmjs.com/package/dotenv)
 * [Body-Parser](https://www.npmjs.com/package/body-parser)
