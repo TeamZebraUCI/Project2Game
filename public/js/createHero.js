@@ -31,6 +31,10 @@ $("#submitBtn").on("click", function (event) {
         health: parseInt($("#Health").attr("value")),
         owner : 1 // <-------------------------------- STATIC USER FOR DEV
     };
+    if (newHero.name.length > 25){
+        $("#msg").text("Keep names under 25 characters");
+        return;
+    }
     $.post("/api/newHero",newHero).then(res=>{
         console.log(res);
         if (res.validRequest){
