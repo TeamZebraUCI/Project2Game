@@ -39,7 +39,7 @@ Why do soldiers bother with target practice? One learns best by hitting real peo
 
 ### [Jon](https://github.com/jonjebo)
 
-### [2Juicy](https://2juicy.github.io/PersonalPortfolio/)
+### [Johnny](https://2juicy.github.io/PersonalPortfolio/)
 
 
 # Credits
